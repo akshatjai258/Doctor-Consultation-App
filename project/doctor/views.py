@@ -1,9 +1,11 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth  import authenticate,  login, logout
+from django.views.generic import DetailView, CreateView
+from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from .models import Contact,Doctor
-from django.contrib.auth  import authenticate,  login, logout
 # Create your views here.
 def home(request):
 	return render(request,'doctor/home.html')
@@ -26,7 +28,8 @@ def contact(request):
 
 def dashboard(request,pk):
 	doctor=Doctor.objects.get(id=pk)
-	return redirect(request,'doctor/dashboard.html')
+	context={'doctor':doctor}
+	return render(request,'doctor/dashboard.html',context)
 	
 
 def handleSignup(request):
@@ -77,4 +80,17 @@ def handelLogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
     return redirect('doctorHome')
+    
+    
+class ShowProfilePageView(DetailView):
+	model = Doctor
+	template_name = 'doctor/user_profile.html'
 
+	def get_context_data(self, *args, **kwargs):
+		#users = Profile.objects.all()
+		context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
+		
+		page_user = get_object_or_404(Doctor, id=self.kwargs['pk'])
+
+		context["page_user"] = page_user
+		return context

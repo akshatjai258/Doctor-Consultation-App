@@ -9,7 +9,7 @@ active
 {%endblock contact_active%}
 
 {%block body%}
-<div class="container my-3">
+<div class="container bg-white mt-5">
 	
 <form method="POST" action="/doctor/contact/">
 	{% csrf_token %}
@@ -28,7 +28,7 @@ active
   </div>
   
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
 </form>
 </div>
 {%endblock body%}
