@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import ShowProfilePageView
+from .views import ShowProfilePageView,EditProfilePageView
 urlpatterns = [
 	path('', views.home,name = 'doctorHome'),
 	path('contact/', views.contact,name = 'contact'),
@@ -10,6 +10,7 @@ urlpatterns = [
 
 	path('login', views.handeLogin, name = "handleLogin"),
 	path('logout', views.handelLogout, name = "handleLogout"),
-	path('<int:pk>/profile',ShowProfilePageView.as_view() ,name = 'profile'),
+	path('<int:pk>/view_profile',ShowProfilePageView.as_view() ,name = 'profile'),
+	path('<int:pk>/edit_profile',EditProfilePageView.as_view() ,name = 'editprofile'),
 
 ]

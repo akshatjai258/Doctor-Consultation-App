@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth  import authenticate,  login, logout
-from django.views.generic import DetailView, CreateView
+from django.views.generic import DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from .models import Contact,Doctor
@@ -94,3 +94,9 @@ class ShowProfilePageView(DetailView):
 
 		context["page_user"] = page_user
 		return context
+		
+class EditProfilePageView(UpdateView):
+	model=Doctor
+	template_name = 'doctor/edit_profile.html'
+	
+	
