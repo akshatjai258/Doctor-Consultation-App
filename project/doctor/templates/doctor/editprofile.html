@@ -1,0 +1,27 @@
+{% extends "doctor/basic.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+  <div class="container rounded bg-white mt-5">
+  	<div class="row">
+  		
+  	<div class="col-md-4 border-right align-items-center">
+  		</div>
+      <div class="col-md-4 border-right align-items-center">
+			<div class="d-flex flex-column align-items-center text-center p-3 py-5">
+				<img class="rounded-circle mt-5 card-img" src="{{user.doctor.profile_pic.url}}"><span class="font-weight-bold">{{user.username}}</span><span class="text-black-50">{{user.email}}</span><span> </span>
+			</div>
+		</div>
+		</div>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Update Profile...</legend>
+              {{ u_form|crispy }}
+              {{ d_form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Update</button>
+          </div>
+      </form>
+    </div>
+{% endblock body %}

@@ -47,12 +47,17 @@ view
 						<label class="labels">State/Region</label><input type="text" class="form-control" value="{{page_user.state}}" readonly=True>
 					</div>
 				</div>
-			
+				{%if user.is_authenticated%}
+			<div class="mt-5 text-center">
+				<a href="{%url 'edit_profile' %}" class="btn btn-primary profile-button">Edit Profile</a>
+			</div>
+			{%endif%}
+      
 			</div>
 		</div>
 	</div>
 </div>
 </div>
-</div>
+
 
 {%endblock body%}

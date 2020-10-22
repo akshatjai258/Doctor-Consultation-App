@@ -6,7 +6,8 @@ from django.views.generic import DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from .models import Contact,Doctor
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm,UserUpdateForm,DoctorUpdateForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
 	return render(request,'doctor/home.html')
@@ -65,8 +66,24 @@ class ShowProfilePageView(DetailView):
 		context["page_user"] = page_user
 		return context
 		
-class EditProfilePageView(UpdateView):
-	model=Doctor
-	template_name = 'doctor/edit_profile.html'
-	
-	
+@login_required
+def profile(request):
+  if request.method == 'POST':
+      u_form = UserUpdateForm(request.POST, instance=request.user)
+      d_form = DoctorUpdateForm(request.POST,request.FILES,instance=request.user.doctor)
+      if u_form.is_valid() and d_form.is_valid():
+          u_form.save()
+          d_form.save()
+          messages.success(request, f'Your account has been updated!')
+          return redirect("edit_profile")
+
+  else:
+      u_form = UserUpdateForm(instance=request.user)
+      d_form = DoctorUpdateForm(instance=request.user.doctor)
+
+  context = {
+      'u_form': u_form,
+      'd_form': d_form
+  }
+
+  return render(request, 'doctor/editprofile.html', context)
