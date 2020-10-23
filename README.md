@@ -1,7 +1,7 @@
 # Sem-3-Project
 This is the project for Computer System Organisation, semester 3, IIT BHU by Team 15 - **Intricates**.
 
-The team members are 
+The collaborated team members are 
 1. Shabari S Nair
 2. Akshat Jain
 3. Sacchit D Sheth
