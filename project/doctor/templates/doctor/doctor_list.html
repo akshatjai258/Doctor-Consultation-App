@@ -1,0 +1,60 @@
+{% extends 'doctor/basic.html' %} {%block title%} About {%endblock title%}
+{%block body%} {%for i in doctors%} {{i.user.username}} {%endfor%}
+
+<div class="container mt-3">
+  <table class="table bg-light">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+        <th scope="col">Adress</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for i in doctors%}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.user.first_name}}</td>
+        <td>{{i.state}}</td>
+        <td>{{i.user.username}}</td>
+        <td>{{i.Address}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+<!-- <div class="container mt-3">
+  <table class="table bg-light">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+         <th scope="row">1</th>
+        <td>{{doctor.user.usname}}</td>
+        <td>Otto</td>
+        <td>@mdo</td> -->
+<!-- </tr> -->
+<!-- </tbody> -->
+<!-- <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody> -->
+{%endblock body%}

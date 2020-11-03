@@ -12,4 +12,5 @@ urlpatterns = [
 	path('<int:pk>/view_profile',ShowProfilePageView.as_view() ,name = 'profile'),
 	path('edit_profile/', views.profile, name='edit_profile'),
 	path('login/', auth_views.LoginView.as_view(template_name='doctor/login.html'), name='login'),
+	path('doctor_list/', views.doctor_list,name = 'doctor_list'),
 ]

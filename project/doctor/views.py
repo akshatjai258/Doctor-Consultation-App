@@ -87,3 +87,10 @@ def profile(request):
   }
 
   return render(request, 'doctor/editprofile.html', context)
+
+
+
+def doctor_list(request):
+    doctors=Doctor.objects.all()
+    context={'doctors':doctors}
+    return render(request,'doctor/doctor_list.html',context)
