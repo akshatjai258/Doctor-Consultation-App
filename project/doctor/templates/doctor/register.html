@@ -21,7 +21,7 @@
 
 {% if form.errors%}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <p>{{ form.non_field_errors }}</p>
+  <p>{{ form.errors.as_text }}</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -60,7 +60,7 @@
           </div>
         </form>
       </div>
-      {{form.errors}}
+
       <div class="signup-image">
         <figure>
           <img
