@@ -27,7 +27,11 @@ class City(models.Model):
 	def __str__(self):
 		return self.city_name
 	
-	
+class Specialization(models.Model):
+	spec_name=models.CharField(max_length=255)
+	def __str__(self):
+		return self.spec_name
+
 class Doctor(models.Model):
 	user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
 	profile_pic=models.ImageField(upload_to='images/profile', default="images/profile/default.png")
@@ -36,6 +40,7 @@ class Doctor(models.Model):
 	Address=models.TextField(default="None")
 	country=models.ForeignKey(Country,on_delete=models.CASCADE,null=True)
 	state=models.ForeignKey(State,on_delete=models.CASCADE,null=True)
+	specialization=models.ForeignKey(Specialization,on_delete=models.CASCADE,null=True)
 	
 	def __str__(self):
 		return self.user.first_name + ' ' +self.user.last_name

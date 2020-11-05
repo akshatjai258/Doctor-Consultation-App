@@ -27,4 +27,4 @@ class DoctorUpdateForm(forms.ModelForm):
 	profile_pic = forms.ImageField(widget=forms.FileInput,)
 	class Meta:
 		model = Doctor
-		fields = ['profile_pic','city','phone','Address','country','state']
+		fields = ['profile_pic','city','phone','Address','country','state','specialization']

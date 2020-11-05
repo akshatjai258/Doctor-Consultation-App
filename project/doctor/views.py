@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from .models import Contact,Doctor
 from .forms import UserRegisterForm,UserUpdateForm,DoctorUpdateForm
 from django.contrib.auth.decorators import login_required
-from .filters import search_doctor
+from .filters import search_doctor,search_user
 # Create your views here.
 def home(request):
 	return render(request,'doctor/home.html')
@@ -93,7 +93,10 @@ def profile(request):
 
 def doctor_list(request):
     doctors=Doctor.objects.all()
-    myFilter=search_doctor(request.GET,queryset=doctors)
-    doctors=myFilter.qs
-    context={'doctors':doctors,'myFilter':myFilter}
+    users=User.objects.all()
+    myFilter1=search_doctor(request.GET,queryset=doctors)
+    myFilter2=search_user(request.GET,queryset=users)
+    doctors=myFilter1.qs
+    users=myFilter2.qs
+    context={'doctors':doctors,'myFilter1':myFilter1,'myFilter2':myFilter2}
     return render(request,'doctor/doctor_list.html',context)
