@@ -9,6 +9,7 @@ from .models import Contact,Doctor
 from .forms import UserRegisterForm,UserUpdateForm,DoctorUpdateForm
 from django.contrib.auth.decorators import login_required
 from .filters import search_doctor,search_user
+from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
 	return render(request,'doctor/home.html')
@@ -95,8 +96,11 @@ def doctor_list(request):
     doctors=Doctor.objects.all()
     users=User.objects.all()
     myFilter1=search_doctor(request.GET,queryset=doctors)
-    myFilter2=search_user(request.GET,queryset=users)
+    # myFilter2=search_user(request.GET,queryset=users)
     doctors=myFilter1.qs
-    users=myFilter2.qs
-    context={'doctors':doctors,'myFilter1':myFilter1,'myFilter2':myFilter2}
+    # users=myFilter2.qs
+    paginated_list=Paginator(doctors,5)
+    page_number=request.GET.get('page')
+    doctor_page_obj=paginated_list.get_page(page_number)
+    context={'doctors':doctors,'myFilter1':myFilter1,'doctor_page_obj':doctor_page_obj}
     return render(request,'doctor/doctor_list.html',context)

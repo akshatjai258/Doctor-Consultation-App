@@ -1,5 +1,9 @@
-{% extends 'doctor/basic.html' %} {%block title%} consult {%endblock title%}
-{%block consult_active%} active {%endblock consult_active%} {%block body%}
+{% extends 'doctor/basic.html' %}
+{% load doctor_extras %}
+{%block title%} consult {%endblock title%}
+
+{%block consult_active%} active {%endblock consult_active%}
+{%block body%}
 
 <style>
   .searchbar {
@@ -8,15 +12,39 @@
   body {
     background: #f8f8f8;
   }
+  .form-button {
+    /* padding: 10px 20px;
+    font-size: 20px; */
+    border-radius: 10px;
+    width: 90%;
+    font-size: 15px;
+  }
+  .profilebtn {
+    /* padding: 10px 20px;
+    font-size: 20px; */
+    border-radius: 10px;
+   
+    font-size: 15px;
+  }
+ 
+.table-wrap {
+  height: 80px;
+  overflow-y: auto;
+}
 </style>
-<div class="container mt-3">
+<div class="cont container mt-3">
   <div class="searchbar">
     <form method="get">
-      {{myFilter2.form }} {{myFilter1.form }}
-      <button type="submit" class="btn btn-primary form-button">Search</button>
+      {{myFilter1.form }}
+      <button
+        type="submit"
+        class="btn btn-outline-primary form-button ml-4 my-2"
+      >
+        Search
+      </button>
     </form>
   </div>
-  <table class="table bg-light">
+  <table class="table table-bordered bg-light table-wrap my-4">
     <thead>
       <tr>
         <th scope="col">SNo.</th>
@@ -25,10 +53,11 @@
         <th scope="col">State</th>
         <th scope="col">username</th>
         <th scope="col">Address</th>
+        <th scope="col">Specialization</th>
       </tr>
     </thead>
     <tbody>
-      {%for i in doctors%}
+      {%for i in doctor_page_obj%}
       <tr>
         <th scope="row">{{i.id}}</th>
         <td>{{i.user.first_name}}</td>
@@ -36,41 +65,43 @@
         <td>{{i.state}}</td>
         <td>{{i.user.username}}</td>
         <td>{{i.Address}}</td>
+        <td>{{i.specialization}}</td>
+        <td>
+          <a href="{%url 'profile' i.id%}" class="btn btn-primary profilebtn"
+            >view profie</a
+          >
+        </td>
       </tr>
       {%endfor%}
     </tbody>
   </table>
 </div>
-<!-- <div class="container mt-3">
-  <table class="table bg-light">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
+<div class="d-flex justify-content-center container">
+  <nav aria-label="Page navigation example">
+{% if doctor_page_obj.has_other_pages %}
+  <ul class="pagination">
+    {% if doctor_page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="{% my_url doctor_page_obj.previous_page_number 'page' request.GET.urlencode %}">previous</a></li>
+    {% else %}
+      <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+    {% endif %}
+    {% for i in doctor_page_obj.paginator.page_range %}
+      {% if doctor_page_obj.number == i %}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+        <li><a class="page-link" href="{% my_url i 'page' request.GET.urlencode %}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if doctor_page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="{% my_url doctor_page_obj.next_page_number 'page' request.GET.urlencode %}">Next</a></li>
+    {% else %}
+    <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</nav>
 
-    <tbody>
-      <tr>
-         <th scope="row">1</th>
-        <td>{{doctor.user.usname}}</td>
-        <td>Otto</td>
-        <td>@mdo</td> -->
-<!-- </tr> -->
-<!-- </tbody> -->
-<!-- <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody> -->
-{%endblock body%}
+</div>
+  {%endblock body%}
