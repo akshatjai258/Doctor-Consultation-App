@@ -34,7 +34,7 @@ class Specialization(models.Model):
 
 class Doctor(models.Model):
 	user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
-	profile_pic=models.ImageField(upload_to='images/profile', default="images/profile/default.png")
+	profile_pic=models.ImageField(upload_to='images/profile', default="images/profile/default.jpg")
 	city=models.ForeignKey(City,on_delete=models.CASCADE,null=True)
 	phone=PhoneNumberField(null=True)
 	Address=models.TextField(default="None")

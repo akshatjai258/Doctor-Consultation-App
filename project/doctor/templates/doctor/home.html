@@ -1,5 +1,5 @@
 {% extends 'doctor/basic.html' %}
-
+{%load static%}
 {%block title%}
 Home
 {%endblock title%}
@@ -8,3 +8,15 @@ Home
 active
 {%endblock home_active%}
 
+
+{%block body%}
+<link rel="stylesheet" href="{%static 'doctor/css/homesr.css' %}">
+<div class="bgimg">
+<div class="container text-center hed">
+    <h2>Health is wealth</h2>
+    <h1>We Doctors love Serving Nation</h1>
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+
+</div>
+</div>
+{%endblock body%}
