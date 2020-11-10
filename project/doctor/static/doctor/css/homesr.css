@@ -1,11 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .bgimg1{
-    background-image: url("bgimg.jpg");
+    background-image: url("12.jpg");
     background-size: 100% 100%;
     background-attachment: fixed;
     width: 100%;
-    height: 700px;
+    height: 100vh;
 }
 .hed{
-    padding-top: 30%;
+    padding-top: 300px;
     box-sizing: border-box;
+    /* padding-left: 250px; */
+}
+.bttt{
+    width: 10px;
 }
