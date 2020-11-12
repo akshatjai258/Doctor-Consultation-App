@@ -151,7 +151,7 @@ def checkdisease(request):
 
   if request.method == 'GET':
     
-     return render(request,'patient/checkdisease/checkdisease.html', {"list2":alphabaticsymptomslist})
+     return render(request,'doctor/checkdisease.html', {"list2":alphabaticsymptomslist})
 
 
 
@@ -216,9 +216,9 @@ def checkdisease(request):
         #                             "Allergist/Immunologist","Urologist","Dermatologist","Gastroenterologist"]
         
 
-        Rheumatologist = [  'Osteoarthristis','Arthritis']
+        Rheumatologist = ['Osteoarthristis','Arthritis']
        
-        Cardiologist = [ 'Heart attack','Bronchial Asthma','Hypertension ']
+        Cardiologist = ['Heart attack','Bronchial Asthma','Hypertension ']
        
         ENT_specialist = ['(vertigo) Paroymsal  Positional Vertigo','Hypothyroidism' ]
 
@@ -270,25 +270,25 @@ def checkdisease(request):
            consultdoctor = "other"
 
 
-        request.session['doctortype'] = consultdoctor 
+        # request.session['doctortype'] = consultdoctor 
 
-        patientusername = request.session['patientusername']
-        puser = User.objects.get(username=patientusername)
+        # patientusername = request.session['patientusername']
+        # puser = User.objects.get(username=patientusername)
      
 
         #saving to database.....................
 
-        patient = puser.patient
-        diseasename = predicted_disease
-        no_of_symp = inputno
-        symptomsname = psymptoms
-        confidence = confidencescore
+        # patient = puser.patient
+        # diseasename = predicted_disease
+        # no_of_symp = inputno
+        # symptomsname = psymptoms
+        # confidence = confidencescore
 
-        diseaseinfo_new = diseaseinfo(patient=patient,diseasename=diseasename,no_of_symp=no_of_symp,symptomsname=symptomsname,confidence=confidence,consultdoctor=consultdoctor)
-        diseaseinfo_new.save()
+        # diseaseinfo_new = diseaseinfo(patient=patient,diseasename=diseasename,no_of_symp=no_of_symp,symptomsname=symptomsname,confidence=confidence,consultdoctor=consultdoctor)
+        # diseaseinfo_new.save()
         
 
-        request.session['diseaseinfo_id'] = diseaseinfo_new.id
+        # request.session['diseaseinfo_id'] = diseaseinfo_new.id
 
         print("disease record saved sucessfully.............................")
 
