@@ -1,10 +1,10 @@
 {% extends 'doctor/basic.html' %} {% load static%} {%block title%} Signup
 {%endblock title%} {% load crispy_forms_tags %} {% block body %}
 <!-- Font Icon -->
-<link
+<!-- <link
   rel="stylesheet"
   href="{%static 'doctor/fonts/material-icon/css/material-design-iconic-font.min.css'%}"
-/>
+/> -->
 
 <link rel="stylesheet" href="{%static 'doctor/css/lin.css'%}" />
 <link
@@ -17,30 +17,39 @@
   body {
     background: #f8f8f8;
   }
+ 
+
 </style>
 
 {% if form.errors%}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <p>{{ form.errors.as_text }}</p>
+  <p>{{ form.errors}}</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 {%endif%}
 <section class="signup">
-  <div class="container">
+ 
     <div class="signup-content">
       <div class="signup-form">
-        <h2 class="form-title">Sign up</h2>
+        <h2 class="form-title text-center">Register</h2>
         <form method="POST" class="register-form" id="register-form">
           {% csrf_token %}
-          <div class="form-group">{{form.first_name}}</div>
-          <div class="form-group">{{form.last_name}}</div>
-          <div class="form-group">{{form.username}}</div>
-          <div class="form-group">{{form.email}}</div>
-          <div class="form-group">{{form.password1}}</div>
-          <div class="form-group">{{form.password2}}</div>
-
+          <div class="fgr">
+          <div class="row mt-3">
+          <div class="col-md-6 col-xs-12 col-sm-12 form-group">{{form.first_name}}</div>
+          <div class="col-md-6 col-xs-12 col-sm-12 form-group">{{form.last_name}}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6 col-xs-12 col-sm-12 form-group">{{form.username}}</div>
+          <div class="col-md-6 col-xs-12 col-sm-12 form-group">{{form.email}}</div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6 col-xs-12 col-sm-12 form-group">{{form.password1}}</div>
+          <div class="col-md-6 col-xs-12 col-sm-12 form-group">{{form.password2}}</div>
+        </div>
+      </div>
           <div class="form-group">
             <input
               type="checkbox"
@@ -54,7 +63,8 @@
             >
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary form-button">
+            <button type="submit" class="btn btn-primary btn-lg btn-block form-button">
+    
               Register
             </button>
           </div>
@@ -73,7 +83,7 @@
         >
       </div>
     </div>
-  </div>
+ 
 </section>
 <script>
   /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript

@@ -210,7 +210,7 @@ list-type-ulli,
     url("../fonts/poppins/poppins-v5-latin-900.svg#Poppins") format("svg");
   /* Legacy iOS */
 }
-a:focus,
+/* a:focus,
 a:active {
   text-decoration: none;
   outline: none;
@@ -219,7 +219,7 @@ a:active {
   -webkit-transition: all 300ms ease 0s;
   -o-transition: all 300ms ease 0s;
   -ms-transition: all 300ms ease 0s;
-}
+} */
 
 input,
 select,
@@ -370,6 +370,7 @@ body {
 }
 
 .signup-content {
+  
   padding: 75px 0;
 }
 
@@ -434,8 +435,8 @@ figure {
 }
 
 .signup-form {
-  margin-left: 75px;
-  margin-right: 75px;
+  margin-left: 35px;
+  margin-right: 35px;
   padding-left: 34px;
 }
 
