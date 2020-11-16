@@ -270,19 +270,19 @@ def checkdisease(request):
            consultdoctor = "other"
 
 
-        # request.session['doctortype'] = consultdoctor 
+      #   request.session['doctortype'] = consultdoctor 
 
-        # patientusername = request.session['patientusername']
-        # puser = User.objects.get(username=patientusername)
+      #   patientusername = request.session['patientusername']
+      #   puser = User.objects.get(username=patientusername)
      
 
-        #saving to database.....................
+        # saving to database.....................
 
         # patient = puser.patient
-        # diseasename = predicted_disease
-        # no_of_symp = inputno
-        # symptomsname = psymptoms
-        # confidence = confidencescore
+      #   diseasename = predicted_disease
+      #   no_of_symp = inputno
+      #   symptomsname = psymptoms
+      #   confidence = confidencescore
 
         # diseaseinfo_new = diseaseinfo(patient=patient,diseasename=diseasename,no_of_symp=no_of_symp,symptomsname=symptomsname,confidence=confidence,consultdoctor=consultdoctor)
         # diseaseinfo_new.save()
