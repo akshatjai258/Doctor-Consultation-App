@@ -51,7 +51,11 @@ def handleSignup(request):
           messages.success(request, f'Account created for {username}!')
           return redirect('doctorHome')
   else:
-      form = UserRegisterForm()
+        if request.user.is_authenticated:
+          messages.error(request,'you are currently logged in')
+          return redirect('doctorHome')
+        else:
+          form = UserRegisterForm()
   return render(request, 'doctor/register.html', {'form': form})
     
   

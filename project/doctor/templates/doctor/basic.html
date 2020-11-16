@@ -4,49 +4,52 @@
 
 <html lang="en">
 <head>
-	<!-- Font Icon -->
-    <link
-      rel="stylesheet"
-      href="{%static 'doctor/fonts/material-icon/css/material-design-iconic-font.min.css'%}"
-    />
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-	<!-- Required meta tags --><link rel="stylesheet" href="{%static 'doctor/css/style.css'%}" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
+
+
+
+
+	<!-- Required meta tags<link rel="stylesheet" href="{%static 'doctor/css/style.css'%}" type="text/css" media="all" /> -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-<!--  -->
-
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-
-<script src="{% static 'jquery.js' %}"></script>
 
 <style type="text/css" media="all">
 	body{
 		background: #f8f8f8;
 }
+h3.my-heading {
+    font-weight: bold;
+}
+li.nav-item {
+    margin: 0 20px 0 0;
+}
+
+
 </style>
-	<title>{% block title %} {% endblock title %}</title>
-
-{% block head %}
-{% endblock %}
+	<title>{% block title %} {%endblock title%}</title>
 
 
+	
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Medihelp</a>
+		<a class="navbar-brand " href="#"><h3 class="my-heading ">Medihelp</h3> </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav ml-auto">
 				<li class="nav-item {% block home_active %} {%endblock home_active %}">
 					<a class="nav-link" href="/doctor">Home <span class="sr-only">(current)</span></a>
 				</li>
@@ -83,7 +86,7 @@
 		</div>
 		{% else %}
 		
-		<a href="{%url 'signup' %}" class="btn btn-success mx-2">
+		<a href="{%url 'signup' %}" class="btn btn-success mr-2">
 			Signup
 			</a>
 	
@@ -103,17 +106,22 @@
 
 
 {% for message in messages %}
+<div class="mrt">
 <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
 	{{ message }}
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
 </div>
+</div>
 {%endfor%}
 
 
 
 {% block body %} {% endblock body %}
+
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

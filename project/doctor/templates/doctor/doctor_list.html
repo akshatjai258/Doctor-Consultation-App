@@ -11,6 +11,9 @@
     box-shadow: none;
     border-color: #ba68c8;
   }
+  .form-label{
+    color: red;
+  }
   .searchbar {
     text-align: center;
   }
@@ -36,8 +39,11 @@
   height: 80px;
   overflow-y: auto;
 }
+.cont{
+margin-top: 100px;
+}
 </style>
-<div class="cont container mt-3">
+<div class="cont container">
   <div class="searchbar">
     <form method="get">
       {{myFilter1.form | crispy }}
