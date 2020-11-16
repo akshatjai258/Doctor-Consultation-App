@@ -1,0 +1,136 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+  
+    <script src="{% static 'doctor/js/jquery.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'doctor/bootstrap/css/bootstrap.min.css' %}">
+    
+   <title>{% block title %}Disease Predictor{% endblock %}</title>
+   
+   <link rel="stylesheet" href="{% static 'doctor/bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'doctor/css/css.css' %}">
+    
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand " href="#"><h3 class="my-heading ">Filox</h3> </a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item {% block home_active %} {%endblock home_active %}">
+					<a class="nav-link" href="/doctor">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item {% block about_active %} {%endblock about_active %}">
+					<a class="nav-link" href="/doctor/about">About Us</a>
+				</li>
+
+				<li class="nav-item {% block contact_active %} {%endblock contact_active %}">
+					<a class="nav-link" href="/doctor/contact">Contact Us</a>
+				</li>
+				<li class="nav-item {% block consult_active %} {%endblock consult_active %}">
+					<a class="nav-link" href="{%url 'doctor_list'%}">Consult</a>
+				</li>
+
+
+
+
+			</ul>
+			{% if user.is_authenticated %}
+			
+			<ul class="navbar-nav mr-2">
+				<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome {{request.user}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{%url 'profile' request.user.doctor.id%}">My profile</a>
+          <a class="dropdown-item" href="{%url 'edit_profile'%}">Edit Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{%url 'handleLogout'%}">Logout</a>
+        </div>
+
+			</ul>
+		</div>
+		{% else %}
+		
+		<a href="{%url 'signup' %}" class="btn btn-success mr-2">
+			Signup
+			</a>
+	
+		<!-- Button trigger Login modal -->
+		<a href="{%url 'login' %}" class="btn btn-success">
+			login
+			</a>
+	
+
+		{% endif %}
+
+
+
+
+	</div>
+</nav>
+
+
+{% for message in messages %}
+<div class="mrt">
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+	{{ message }}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+</div>
+{%endfor%}
+  
+    {% block head %}
+
+
+
+    {% endblock %}
+
+
+  
+  </head>
+
+
+  <body>
+
+
+
+     
+
+
+
+  {% block body %}
+
+  {% endblock %}
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+
+
+</body>
+</html>

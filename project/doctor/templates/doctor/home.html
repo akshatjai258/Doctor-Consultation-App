@@ -30,14 +30,14 @@ active
                     <div class="col-md-12 ">
 
                         <h1 class="title-main"> 
-                            <p class="typewrite" data-period="2000" data-type='[ "Welcome To Medihelp", "An Ultimate Helper" ]'>
+                            <p class="typewrite" data-period="2000" data-type='[ "Welcome To Filox", "Your Guide to Good Health" ]'>
                                 <span class="wrap"></span> </p>
                         
                         </h1>
-                        <h3 class="subtitle-main wow fadeInUp" data-wow-duration="1.1s">Lorem ipsum dolor sit amet consectetur adipiscing elit proin leo leo ornare nec vulputate tempus velit nam id purus tellus hendrerit mi dapibus.</h3>
+                        <h3 class="subtitle-main wow fadeInUp" data-wow-duration="1.1s">Get immediate awareness about your well being. Connect with the best specialists around you.</h3>
 						<div class="top-btn-block wow fadeInUp data-wow-duration="2.5s">
 							<a href="#overview" class="btn-explore ">Overview</a>
-							<a href="javascript:void(0)" class="btn btn-outline-success btn-account ">Disease Predictor</a>
+							<a href="{% url 'checkdisease' %}" class="btn btn-outline-success btn-account ">Disease Predictor</a>
 						</div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ active
             <div class="container">
                 <div class="contenedor">
                     <h2 class="title-overview wow fadeInUp">Overview</h2>
-                    <p class="subtitle-overview wow fadeInUp">Lorem ipsum dolor sit amet consectetur adipiscing elit proin leo leo ornare nec vulputate tempus velit nam id purus tellus hendrerit mi dapibus</p>
+                    <p class="subtitle-overview wow fadeInUp">This is an initiative to help both patients and doctors. If you are a patient, let us know your symptoms, we will guide you on your way to good health. You can also search for doctors and specialists of you choice near you. If you are doctor, register yourself with us. Let patients find you easily.</p>
                     
               <div class="row">
 
@@ -62,7 +62,7 @@ active
                       </figure>
                       <div class="card-body">
                           <h5 class="card-title">Signup Doctors!!</h5>
-                          <p class="card-text">If You are a doctor please register to our website and buid your profile so that patient can reach to you</p>
+                          <p class="card-text">Are you a doctor? Looking to expand you business? Register yourself with us.</p>
                           <a href="{%url 'signup' %}" class="btn btn-success">
                             Signup
                             </a>
@@ -78,9 +78,9 @@ active
                           </figure>
                           <div class="card-body">
                               <h5 class="card-title">Consult A Doctor</h5>
-                              <p class="card-text">Want to consult a doctor please head over here and simply select your doctor based on specialization and locality</p>
+                              <p class="card-text">Want to consult a doctor? Head over to the consult section to know about different doctors near your area.</p>
                               <a href="{%url 'doctor_list'%}" class="btn btn-success">
-                                consult
+                                Consult
                                 </a>
                             </div>
                       </div>
@@ -92,9 +92,9 @@ active
                         </figure>
                         <div class="card-body">
                             <h5 class="card-title">Predict Your Disease</h5>
-                            <p class="card-text">Having some symptoms and worried about disease please head over here to predict your disease</p>
-                            <a href="#" class="btn btn-success">
-                              Disease predictor
+                            <p class="card-text">Worried about your ill health. Make use of our well trained ML base disease predictor to get an accurate knowledge of the possible disease you have.</p>
+                            <a href="{% url 'checkdisease' %}" class="btn btn-success">
+                              Disease Predictor
                               </a>
                           </div>
                     </div>
