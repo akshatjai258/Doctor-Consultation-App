@@ -14,6 +14,9 @@ from django.http import JsonResponse
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.core.mail import send_mail
+from django.conf import settings
+from django.template import loader
+
 
 # Create your views here.
 
@@ -44,8 +47,9 @@ def contact(request):
       content=request.POST['content']
       contact=Contact(name=name,email=email,content=content)
       contact.save() 
-      message = 'Hi '+str(name)+'. Greetings from Filox. Thankyou for submitting your query/feedback. In case of a query, we will get back to you as soon as possible. Also, this is a auto-generated mail. So please refrain from replying to this mail.'
-      send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=False)
+      html_message = loader.render_to_string('doctor/email_contact.html',{'name':name})
+      message = 'Hi '+str(name)+'. Greetings from Filox. Thank you for submitting your query/feedback. In case of a query, we will get back to you as soon as possible. Also, this is a auto-generated mail. So please refrain from replying to this mail.'
+      send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=True,html_message=html_message)
       messages.success(request,"Your query is sent successfully !!!")
 
    return render (request,"doctor/contact.html")
@@ -62,7 +66,12 @@ def handleSignup(request):
       if form.is_valid():
           form.save()
           username = form.cleaned_data.get('username')
+          email = form.cleaned_data.get('email')
           messages.success(request, f'Account created for {username}!')
+          html_message = loader.render_to_string('doctor/email_regis.html',{'username':username})
+
+          message = ''
+          send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=True,html_message=html_message)
           return redirect('doctorHome')
   else:
         if request.user.is_authenticated:
