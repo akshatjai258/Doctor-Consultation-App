@@ -122,9 +122,14 @@ $("#predict").click(function () {
 
         $("#href").attr("href","https://www.google.com/search?q="+ disease +"");
 
-        
-        // document.getElementById('consultdoctor').innerText = data["consultdoctor"];
-
+        if(data["special_id"] == 0)
+        {
+          document.getElementById("consultnow").style.visibility = "hidden";
+        }
+        else{
+        document.getElementById('consultdoctor').innerText = data["consultdoctor"];
+        document.getElementById('consultnow').href = '/doctor/doctor_list/?user=&specialization='+data["special_id"]+'&state=&Address=';
+        }
       }
       
     });
@@ -256,20 +261,19 @@ $("#predict").click(function () {
         </div>
 
 
-<!-- 
+
 <div class="mx-auto text-center " style="width:350px">
   
      
-        <div >  <form action="consult_a_doctor" method="GET">
-            {% csrf_token %} 
-            <button id="consultbtn" type="submit" class="btn btn-primary"> Consult a <span id="consultdoctor"  name="consultdoctor" > </span> doctor</button>
-          </form>
+        <div >  
+             
+          <a id ="consultnow" class="btn btn-primary" href="#" role="button">Consult a <span id="consultdoctor" name="consultdoctor" ></span> doctor</a>
+            
+          
         </div>
       
  
-</div> -->
-
-         
+</div>
 
 </div>
 

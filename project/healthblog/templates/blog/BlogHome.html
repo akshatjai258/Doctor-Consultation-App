@@ -1,11 +1,16 @@
 
+<<<<<<< HEAD
 {% extends 'doctor/basic.html' %}
+=======
+{% extends 'doctor/basic_ml.html' %}
+>>>>>>> master
 {%load static%}
 {%block title%}
 Home
 {%endblock title%}
 
 {%block body%}
+<<<<<<< HEAD
 <style>
 
   .btn-sm{
@@ -15,6 +20,9 @@ Home
     margin-left: 30px;
   }
 </style>
+=======
+
+>>>>>>> master
 <div class="container my-3">
     <h2>Some Healthy stuff </h2>
     {% for post in object_list  %}
@@ -27,10 +35,17 @@ Home
                 {%if user.is_authenticated %}
 
     {%if post.author.id ==  user.id%}
+<<<<<<< HEAD
     <span class="xyz">
       <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
       <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
     </span>
+=======
+    <div class="text-right">
+    <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
+    <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
+</div>
+>>>>>>> master
     {%endif%}
     {%endif%}
             </div>

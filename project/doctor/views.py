@@ -5,12 +5,18 @@ from django.contrib.auth  import authenticate,  login, logout
 from django.views.generic import DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
-from .models import Contact,Doctor
+from .models import Contact,Doctor,Specialization
 from .forms import UserRegisterForm,UserUpdateForm,DoctorUpdateForm
 from django.contrib.auth.decorators import login_required
 from .filters import search_doctor,search_user
 from django.core.paginator import Paginator
 from django.http import JsonResponse
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template import loader
+
 
 # Create your views here.
 
@@ -23,18 +29,30 @@ def home(request):
 def about(request):
 	# return HttpResponse('hr')
 	return render(request,'doctor/about.html')
+
+# def validateEmail( email ):
+#    from django.core.validators import validate_email
+#    from django.core.exceptions import ValidationError
+#    try:
+#       validate_email( email )
+#       return True
+#    except ValidationError:
+#       return False
 	
 def contact(request):
 	# name=request.post['name']
-	if(request.method=='POST'):
-		name=request.POST['name']
-		email=request.POST['email']
-		content=request.POST['content']
-		contact=Contact(name=name,email=email,content=content)
-		contact.save()
-		messages.success(request,"Your query is sent successfully !!!")
-		
-	return render (request,"doctor/contact.html")
+   if(request.method=='POST'):
+      name=request.POST['name']
+      email=request.POST['email']
+      content=request.POST['content']
+      contact=Contact(name=name,email=email,content=content)
+      contact.save() 
+      html_message = loader.render_to_string('doctor/email_contact.html',{'name':name})
+      message = 'Hi '+str(name)+'. Greetings from Filox. Thank you for submitting your query/feedback. In case of a query, we will get back to you as soon as possible. Also, this is a auto-generated mail. So please refrain from replying to this mail.'
+      send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=True,html_message=html_message)
+      messages.success(request,"Your query is sent successfully !!!")
+
+   return render (request,"doctor/contact.html")
 
 def dashboard(request,pk):
 	doctor=Doctor.objects.get(id=pk)
@@ -48,7 +66,12 @@ def handleSignup(request):
       if form.is_valid():
           form.save()
           username = form.cleaned_data.get('username')
+          email = form.cleaned_data.get('email')
           messages.success(request, f'Account created for {username}!')
+          html_message = loader.render_to_string('doctor/email_regis.html',{'username':username})
+
+          message = ''
+          send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=True,html_message=html_message)
           return redirect('doctorHome')
   else:
         if request.user.is_authenticated:
@@ -273,6 +296,13 @@ def checkdisease(request):
         else :
            consultdoctor = "other"
 
+        if consultdoctor != 'other':
+
+            special = Specialization.objects.get(spec_name=consultdoctor)
+            special_id = special.id
+            print(special)
+        else:
+            special_id = 0
 
       #   request.session['doctortype'] = consultdoctor 
 
@@ -294,6 +324,10 @@ def checkdisease(request):
 
         # request.session['diseaseinfo_id'] = diseaseinfo_new.id
 
-        print("disease record saved sucessfully.............................")
+      #   print("disease record saved sucessfully.............................")
 
-        return JsonResponse({'predicteddisease': predicted_disease ,'confidencescore':confidencescore , "consultdoctor": consultdoctor})
+        
+
+        print(special_id)
+
+        return JsonResponse({'predicteddisease': predicted_disease ,'confidencescore':confidencescore , "consultdoctor": consultdoctor, "special_id":special_id})
