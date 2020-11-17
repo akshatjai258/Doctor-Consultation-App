@@ -1,1 +1,23 @@
-<h1>Hello World</h1>
+
+{% extends 'doctor/basic.html' %}
+{%load static%}
+{%block title%}
+Home
+{%endblock title%}
+
+{%block body%}
+<div class="container">
+
+<h1>Post</h1>
+<ul>
+{% for post in object_list%}
+
+<li><a href="{%url 'BlogDetail' post.pk%}"> view </a> {{post.title}} - {{post.author}} <br/>
+    {{post.body}}
+
+</li>
+<br>
+{%endfor%}
+</ul>
+</div>
+{%endblock body%}

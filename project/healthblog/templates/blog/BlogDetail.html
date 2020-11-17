@@ -1,0 +1,18 @@
+
+{% extends 'doctor/basic.html' %}
+{%load static%}
+{%block title%}
+Home
+{%endblock title%}
+
+
+{%block body%}
+<div class="container">
+<h1>{{post.title}}</h1>
+<small>By : {{post.author.first_name}} {{post.author.last_name}}</small> <br>
+<hr>
+<br>
+{{post.body}}
+</div>
+
+{%endblock body%}

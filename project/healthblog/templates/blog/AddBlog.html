@@ -1,0 +1,22 @@
+
+{% extends 'doctor/basic.html' %}
+{%load static%}
+{%block title%}
+Home
+{%endblock title%}
+
+{%block body%}
+<div class="container">
+
+<h1>Add Post</h1>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+    <button class="btn btn-primary">Add post</button>
+    </form>
+</div>
+
+
+</div>
+{%endblock body%}
