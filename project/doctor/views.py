@@ -331,3 +331,9 @@ def checkdisease(request):
         print(special_id)
 
         return JsonResponse({'predicteddisease': predicted_disease ,'confidencescore':confidencescore , "consultdoctor": consultdoctor, "special_id":special_id})
+
+
+
+def payment(request):
+   return render(request,'doctor/payment.html')
+
