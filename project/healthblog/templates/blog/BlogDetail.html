@@ -9,7 +9,11 @@ Home
 {%block body%}
 <div class="container">
 <h1>{{post.title}}</h1>
-<small>By : {{post.author.first_name}} {{post.author.last_name}}</small> <br>
+<small>By : {{post.author.first_name}} {{post.author.last_name}}
+
+    <a href="{% url 'UpdatePost' post.pk%}">edit</a>
+    <a href="{% url 'DeletePost' post.pk%}">delete</a>
+</small> <br>
 <hr>
 <br>
 {{post.body}}

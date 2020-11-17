@@ -12,7 +12,8 @@ Home
 <ul>
 {% for post in object_list%}
 
-<li><a href="{%url 'BlogDetail' post.pk%}"> view </a> {{post.title}} - {{post.author}} <br/>
+<li><a href="{%url 'BlogDetail' post.pk%}"> view </a> {{post.title}} - {{post.author}}  <a href="{%url 'UpdatePost' post.pk%}">edit</a>
+    <a href="{%url 'DeletePost' post.pk%}">delete</a><br/>
     {{post.body}}
 
 </li>

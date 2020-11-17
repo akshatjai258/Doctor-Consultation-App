@@ -2,18 +2,23 @@
 {% extends 'doctor/basic.html' %}
 {%load static%}
 {%block title%}
-Home
+Delete Blog
 {%endblock title%}
 
 {%block body%}
 <div class="container">
 
-<h1>Add Post</h1>
+<h1>Delete Post ....</h1>
+
 <div class="form-group">
+    <h3>Delete {{post.title}}</h3>
+    <br>
+<br>
+<br>
     <form method="POST">
         {% csrf_token %}
-        {{form.as_p}}
-    <button class="btn btn-primary">Add post</button>
+        <strong>Are you sure ?</strong>
+    <button class="btn btn-primary">Delete</button>
     </form>
 </div>
 
