@@ -10,13 +10,20 @@ Home
 <div class="container">
 <h1>{{post.title}}</h1>
 <small>By : {{post.author.first_name}} {{post.author.last_name}}
-
+{{post.post_date}}
+{%if user.is_authenticated %}
+{%if post.author.id ==  user.id%}
     <a href="{% url 'UpdatePost' post.pk%}">edit</a>
     <a href="{% url 'DeletePost' post.pk%}">delete</a>
 </small> <br>
+{%endif%}
+
+{%endif%}
 <hr>
 <br>
-{{post.body}}
+<p>
+{{post.body | safe}}
+</p>
 </div>
 
 {%endblock body%}

@@ -5,7 +5,11 @@
 EditBlog
 {%endblock title%}
 
+
 {%block body%}
+{%if user.is_authenticated %}
+
+{%if post.author.id ==  user.id%}
 <div class="container">
 
 <h1>Update Post</h1>
@@ -16,6 +20,12 @@ EditBlog
     <button class="btn btn-primary">Update</button>
     </form>
 </div>
+{%else%}
+<h2>not allowed</h2>
+{% endif %}
+{%else%}
+<h2>not allowed</h2>
+{% endif %}
 
 
 </div>

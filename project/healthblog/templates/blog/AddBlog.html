@@ -6,9 +6,10 @@ Home
 {%endblock title%}
 
 {%block body%}
+{%if user.is_authenticated %}
 <div class="container">
 
-<h1>Add Post</h1>
+<h1>Add Post......</h1>
 <div class="form-group">
     <form method="POST">
         {% csrf_token %}
@@ -19,4 +20,14 @@ Home
 
 
 </div>
+
+
+<script>
+
+    var name="{{user.id}}"
+    document.getElementById("authore").value=name;
+</script>
+{%else%}
+<h2>not allowed</h2>
+{% endif %}
 {%endblock body%}
