@@ -5,7 +5,7 @@ from django.contrib.auth  import authenticate,  login, logout
 from django.views.generic import DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
-from .models import Contact,Doctor
+from .models import Contact,Doctor,Specialization
 from .forms import UserRegisterForm,UserUpdateForm,DoctorUpdateForm
 from django.contrib.auth.decorators import login_required
 from .filters import search_doctor,search_user
@@ -273,6 +273,13 @@ def checkdisease(request):
         else :
            consultdoctor = "other"
 
+        if consultdoctor != 'other':
+
+            special = Specialization.objects.get(spec_name=consultdoctor)
+            special_id = special.id
+            print(special)
+        else:
+            special_id = 0
 
       #   request.session['doctortype'] = consultdoctor 
 
@@ -294,6 +301,10 @@ def checkdisease(request):
 
         # request.session['diseaseinfo_id'] = diseaseinfo_new.id
 
-        print("disease record saved sucessfully.............................")
+      #   print("disease record saved sucessfully.............................")
 
-        return JsonResponse({'predicteddisease': predicted_disease ,'confidencescore':confidencescore , "consultdoctor": consultdoctor})
+        
+
+        print(special_id)
+
+        return JsonResponse({'predicteddisease': predicted_disease ,'confidencescore':confidencescore , "consultdoctor": consultdoctor, "special_id":special_id})
