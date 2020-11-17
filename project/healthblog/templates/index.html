@@ -1,0 +1,74 @@
+{% extends 'doctor/basic.html' %}
+{%load static%}
+{%block title%}
+Blog
+{%endblock title%}
+
+
+
+{%block body%}
+
+
+<div class="container my-3">
+    <h2>Some Healthy stuff </h2>
+    {% for post in posts  %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+        <div class="col p-4 d-flex flex-column position-static ">
+            <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}}</strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-muted">{{post.post_date}}
+
+                {%if user.is_authenticated %}
+
+    {%if post.author.id ==  user.id%}
+    <div class="text-right">
+    <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
+    <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
+</div>
+    {%endif%}
+    {%endif%}
+            </div>
+            <p class="card-text mb-auto">{{post.body| truncatechars:500}}</p>
+            <div class="my-2">
+            	<a href="{%url 'BlogDetail' post.pk%}" role="button" class="btn btn-primary">Continue reading</a>
+            </div>
+            
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <img src="https://source.unsplash.com/IGfIGP5ONV0/200x200" alt="">
+        </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="d-flex justify-content-center container">
+        <nav aria-label="Page navigation example">
+      {% if is_paginated %}
+        <ul class="pagination">
+          {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">previous</a></li>
+          {% else %}
+            <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+          {% endif %}
+          {% for i in page_obj.paginator.page_range %}
+            {% if page_obj.number == i %}
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
+            </li>
+            {% else %}
+              <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a></li>
+          {% else %}
+          <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+      </nav>
+      
+      </div>
+
+{%endblock body%}

@@ -35,3 +35,9 @@ class DeletePostView(DeleteView):
     template_name='blog/DeletePost.html'
     success_url=reverse_lazy("BlogHome")
 
+def index_page(request,pk):
+    logged_in_user = request.user
+    logged_in_user_posts = Post.objects.filter(author=pk)
+
+    return render(request, 'index.html', {'posts': logged_in_user_posts})
+
