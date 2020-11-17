@@ -14,5 +14,5 @@ urlpatterns = [
 	path('login/', auth_views.LoginView.as_view(template_name='doctor/login.html'), name='login'),
 	path('doctor_list/', views.doctor_list,name = 'doctor_list'),
 	path('checkdisease/', views.checkdisease,name = 'checkdisease'),
-	path('payment/',view.payment,name='support')
+	path('payment/',views.payment,name='support')
 ]

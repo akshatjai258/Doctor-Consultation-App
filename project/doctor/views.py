@@ -335,5 +335,5 @@ def checkdisease(request):
 
 
 def payment(request):
-   return render(request,'doctor/payment.html')
+   return render(request,'doctor/payment2.html')
 
