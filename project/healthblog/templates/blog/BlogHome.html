@@ -11,7 +11,7 @@ Home
     <h2>Some Healthy stuff </h2>
     {% for post in object_list  %}
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
+        <div class="col p-4 d-flex flex-column position-static ">
             <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}}</strong>
             <h3 class="mb-0">{{post.title}}</h3>
             <div class="mb-1 text-muted">{{post.post_date}}
@@ -19,9 +19,10 @@ Home
                 {%if user.is_authenticated %}
 
     {%if post.author.id ==  user.id%}
+    <div class="text-right">
     <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
     <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
-
+</div>
     {%endif%}
     {%endif%}
             </div>

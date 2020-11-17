@@ -15,9 +15,11 @@ Home
             
                 {%if user.is_authenticated %}
                 {%if post.author.id ==  user.id%}
+                <div class="text-right">
                     <a class="btn-sm btn-success" href="{% url 'UpdatePost' post.pk%}">edit</a>
                     <a class="btn-sm btn-danger" href="{% url 'DeletePost' post.pk%}">delete</a>
                 </small> <br>
+            </div>
                 {%endif%}
                 
                 {%endif%}
