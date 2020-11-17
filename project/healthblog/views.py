@@ -12,6 +12,7 @@ class HomeView(ListView):
     model=Post
     template_name='blog/BlogHome.html'
     ordering=['-post_date']
+    paginate_by=2
 
 
 class ArticleDetailView(DetailView):

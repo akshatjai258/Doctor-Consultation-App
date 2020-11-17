@@ -7,23 +7,28 @@ Home
 
 
 {%block body%}
-<div class="container">
-<h1>{{post.title}}</h1>
-<small>By : {{post.author.first_name}} {{post.author.last_name}}
-{{post.post_date}}
-{%if user.is_authenticated %}
-{%if post.author.id ==  user.id%}
-    <a href="{% url 'UpdatePost' post.pk%}">edit</a>
-    <a href="{% url 'DeletePost' post.pk%}">delete</a>
-</small> <br>
-{%endif%}
 
-{%endif%}
-<hr>
-<br>
-<p>
-{{post.body | safe}}
-</p>
-</div>
+<div class="container my-3">
+    <div class="blog-post">
+            <h2 class="blog-post-title">{{post.title}}</h2>
+            <p class="blog-post-meta">{{post.post_date}} by <a href="#">{{post.author}}</a>
+            
+                {%if user.is_authenticated %}
+                {%if post.author.id ==  user.id%}
+                    <a class="btn-sm btn-success" href="{% url 'UpdatePost' post.pk%}">edit</a>
+                    <a class="btn-sm btn-danger" href="{% url 'DeletePost' post.pk%}">delete</a>
+                </small> <br>
+                {%endif%}
+                
+                {%endif%}
+            </p>
+    
+            <p>{{post.body}}</p>
+            <hr>
+          </div>
+          </div>
+
+
+
 
 {%endblock body%}
