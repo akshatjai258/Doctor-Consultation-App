@@ -1,266 +1,417 @@
-{% extends 'doctor/basic.html' %}
-{%load static%}
-{%block title%}
-Home
-{%endblock title%}
-
-{%block about_active%}
-active
-{%endblock about_active%}
-
-
+{% extends 'doctor/basic_ml.html' %} {%load static%} {%block title%} Home
+{%endblock title%} {%block about_active%} active {%endblock about_active%}
 {%block head%}
 
 <!------ Include the above in your HEAD tag ---------->
 <!-- <link rel="stylesheet" href="{%static 'doctor/css/about.css'%}"> -->
 
-{%endblock head%}
-{%block body%}
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="{%static 'doctor/css/about.css'%}">
+{%endblock head%} {%block body%}
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<link rel="stylesheet" href="{%static 'doctor/css/about.css'%}" />
 
 <!-- <script src="{%static 'doctor/js/animate.js'%}"></script> -->
 <!------ Include the above in your HEAD tag ---------->
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css"
+/>
 
 <div class="carrr">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner " role="listbox">
-    <!-- Slide One - Set the background image for this slide in the line below -->
-    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/iIDiRMITYik/1920x1080')">
-      <div class="carousel-caption d-none d-md-block">
-        <h2 class="display-4 txt-hed">Best Health Platform out there</h2>
-        <p class="lead txt">A place where you can find solution to your health problems instantly.</p>
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-ride="carousel"
+  >
+    <ol class="carousel-indicators">
+      <li
+        data-target="#carouselExampleIndicators"
+        data-slide-to="0"
+        class="active"
+      ></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div
+        class="carousel-item active"
+        style="
+          background-image: url('https://source.unsplash.com/iIDiRMITYik/1920x1080');
+        "
+      >
+        <div class="carousel-caption d-none d-md-block">
+          <div class="p-3 mb-2 bg-success text-white">
+            <h2 class="display-4 text-white">Best Health Platform out there</h2>
+            <p class="lead text-white">
+              A place where you can find solution to your health problems
+              instantly.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div
+        class="carousel-item"
+        style="
+          background-image: url('https://source.unsplash.com/zsKFQs2kDpM/1920x1080');
+        "
+      >
+        <div class="carousel-caption d-none d-md-block">
+          <div class="p-3 mb-2 bg-success text-white">
+            <h2 class="display-4 text-white">Connect with patients</h2>
+            <p class="lead text-white">
+              Doctors, connect yourself with patients needing you.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div
+        class="carousel-item"
+        style="
+          background-image: url('https://source.unsplash.com/NFvdKIhxYlU/1920x1080');
+        "
+      >
+        <div class="carousel-caption d-none d-md-block">
+          <div class="p-3 mb-2 bg-success text-white">
+            <h2 class="display-4 text-white">Check Your health Yourself</h2>
+            <p class="lead text-white">
+              Our ML model makes life easier by accurately predicting your
+              disease for you.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Slide Two - Set the background image for this slide in the line below -->
-    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/zsKFQs2kDpM/1920x1080')">
-      <div class="carousel-caption d-none d-md-block">
-        <h2 class="display-4 txt-hed">Connect with patients</h2>
-        <p class="lead txt">Doctors, connect yourself with patients needing you.</p>
-      </div>
-    </div>
-    <!-- Slide Three - Set the background image for this slide in the line below -->
-    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/NFvdKIhxYlU/1920x1080')">
-      <div class="carousel-caption d-none d-md-block">
-        <h2 class="display-4 txt-hed">Check Your health Yourself</h2>
-        <p class="lead txt">Our ML model makes life easier by accurately predicting your disease for you.</p>
-      </div>
-    </div>
+    <a
+      class="carousel-control-prev"
+      href="#carouselExampleIndicators"
+      role="button"
+      data-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next"
+      href="#carouselExampleIndicators"
+      role="button"
+      data-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-</div>
-
-
 </div>
 <section id="team" class="pb-5">
   <div class="container">
-      <h5 class="section-title h1">OUR TEAM</h5>
-      <div class="row">
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="image-flip" >
-                  <div class="mainflip flip-0">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="{%static 'doctor/images/Akshat.jpg'%}" alt="card image"></p>
-                                  <h4 class="card-title">Akshat Jain</h4>
-                                  <p class="card-text">Backend developement and UI</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                <h4 class="card-title">Akshat Jain</h4>
-                                <p class="card-text">"Use of exotic layouts, visually soothing designs, and packing a site with as many services and feature as possible go a long way to how users feel about your site." </p>
-                                <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://www.instagram.com/_akshat._.jain/">
-                                              <i class="fa fa-instagram"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://twitter.com/AkshatJ98428411">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://www.linkedin.com/in/akshat-jain-9503a41bb/">
-                                              <i class="fa fa-linkedin"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://github.com/akshatjai258">
-                                              <i class="fa fa-github"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+    <h5 class="section-title h1">OUR TEAM</h5>
+    <div class="row">
+      <!-- Team member -->
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="image-flip">
+          <div class="mainflip flip-0">
+            <div class="frontside">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p>
+                    <img
+                      class="img-fluid"
+                      src="{%static 'doctor/images/Akshat.jpg'%}"
+                      alt="card image"
+                    />
+                  </p>
+                  <h4 class="card-title">Akshat Jain</h4>
+                  <p class="card-text">Backend developement and UI</p>
+                </div>
               </div>
-          </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                <p><img class=" img-fluid" src="{% static 'doctor/images/Shabari.jpeg' %}" alt="card image"></p>
-                                <h4 class="card-title">Shabari S Nair</h4>
-                                  <p class="card-text">Machine Learning </p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">Shabari S Nair</h4>
-                                  <p class="card-text">"In this big-data era, machine learning helps us in solving intricate and otherwise impossible seeming problems. The key lies in knowing what algorithms to use."</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-skype"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+            </div>
+            <div class="backside">
+              <div class="card">
+                <div class="card-body text-center mt-4">
+                  <h4 class="card-title">Akshat Jain</h4>
+                  <p class="card-text">
+                    "Use of exotic layouts, visually soothing designs, and
+                    packing a site with as many services and feature as possible
+                    go a long way to how users feel about your site."
+                  </p>
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="https://www.instagram.com/_akshat._.jain/"
+                      >
+                        <i class="fa fa-instagram"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="https://twitter.com/AkshatJ98428411"
+                      >
+                        <i class="fa fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="https://www.linkedin.com/in/akshat-jain-9503a41bb/"
+                      >
+                        <i class="fa fa-linkedin"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="https://github.com/akshatjai258"
+                      >
+                        <i class="fa fa-github"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
+            </div>
           </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="{%static 'doctor/images/Hitesh.jpg'%}" alt="card image"></p>
-                                  <h4 class="card-title">Hitesh Jindal</h4>
-                                  <p class="card-text">Degugging and Databse Management</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">Hitesh Jindal</h4>
-                                  <p class="card-text">"Debugging forms an important part of any project. Careful observation and patience can help in debugging any bus, no matter how intricate."</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://www.instagram.com/jindal_hitesh0429/">
-                                              <i class="fa fa-instagram"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://www.linkedin.com/in/hitesh-jindal-708b471a5/">
-                                              <i class="fa fa-linkedin"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="https://github.com/jindalji-hitesh">
-                                              <i class="fa fa-github"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
-          <!-- Team member -->
-          <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                  <div class="mainflip">
-                      <div class="frontside">
-                          <div class="card">
-                              <div class="card-body text-center">
-                                  <p><img class=" img-fluid" src="{%static 'doctor/images/Sachit.jpg'%}" alt="card image"></p>
-                                  <h4 class="card-title">Sachhit Seth</h4>
-                                  <p class="card-text">Data Processing and Disease Prediction</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="backside">
-                          <div class="card">
-                              <div class="card-body text-center mt-4">
-                                  <h4 class="card-title">Sachhit Seth</h4>
-                                  <p class="card-text">"Data collection and its careful processing so that it is fit for learning forms an integral part of any ML application"</p>
-                                  <ul class="list-inline">
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-facebook"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-twitter"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-skype"></i>
-                                          </a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a class="social-icon text-xs-center" target="_blank" href="#">
-                                              <i class="fa fa-google"></i>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- ./Team member -->
-
+        </div>
       </div>
+      <!-- ./Team member -->
+      <!-- Team member -->
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+          <div class="mainflip">
+            <div class="frontside">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p>
+                    <img
+                      class="img-fluid"
+                      src="{% static 'doctor/images/Shabari.jpeg' %}"
+                      alt="card image"
+                    />
+                  </p>
+                  <h4 class="card-title">Shabari S Nair</h4>
+                  <p class="card-text">Machine Learning</p>
+                </div>
+              </div>
+            </div>
+            <div class="backside">
+              <div class="card">
+                <div class="card-body text-center mt-4">
+                  <h4 class="card-title">Shabari S Nair</h4>
+                  <p class="card-text">
+                    "In this big-data era, machine learning helps us in solving
+                    intricate and otherwise impossible seeming problems. The key
+                    lies in knowing what algorithms to use."
+                  </p>
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-facebook"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-skype"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-google"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./Team member -->
+      <!-- Team member -->
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+          <div class="mainflip">
+            <div class="frontside">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p>
+                    <img
+                      class="img-fluid"
+                      src="{%static 'doctor/images/Hitesh.jpg'%}"
+                      alt="card image"
+                    />
+                  </p>
+                  <h4 class="card-title">Hitesh Jindal</h4>
+                  <p class="card-text">Debugging and Database Management</p>
+                </div>
+              </div>
+            </div>
+            <div class="backside">
+              <div class="card">
+                <div class="card-body text-center mt-4">
+                  <h4 class="card-title">Hitesh Jindal</h4>
+                  <p class="card-text">
+                    "Debugging forms an important part of any project. Careful
+                    observation and patience can help in debugging any bus, no
+                    matter how intricate."
+                  </p>
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="https://www.instagram.com/jindal_hitesh0429/"
+                      >
+                        <i class="fa fa-instagram"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="https://www.linkedin.com/in/hitesh-jindal-708b471a5/"
+                      >
+                        <i class="fa fa-linkedin"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="https://github.com/jindalji-hitesh"
+                      >
+                        <i class="fa fa-github"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./Team member -->
+      <!-- Team member -->
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+          <div class="mainflip">
+            <div class="frontside">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p>
+                    <img
+                      class="img-fluid"
+                      src="{%static 'doctor/images/Sachit.jpg'%}"
+                      alt="card image"
+                    />
+                  </p>
+                  <h4 class="card-title">Sacchit Sheth</h4>
+                  <p class="card-text">
+                    Data Processing and Disease Prediction
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="backside">
+              <div class="card">
+                <div class="card-body text-center mt-4">
+                  <h4 class="card-title">Sacchit Sheth</h4>
+                  <p class="card-text">
+                    "Data collection and its careful processing so that it is
+                    fit for learning forms an integral part of any ML
+                    application"
+                  </p>
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-facebook"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-skype"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        class="social-icon text-xs-center"
+                        target="_blank"
+                        href="#"
+                      >
+                        <i class="fa fa-google"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./Team member -->
+    </div>
   </div>
 </section>
 {%endblock body%}

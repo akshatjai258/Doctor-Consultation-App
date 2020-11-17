@@ -1,35 +1,49 @@
-{% load static %}
+{% load static%}
 
 <!doctype html>
+
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
-<style>li.nav-item {
+<head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
+
+
+
+
+	<!-- Required meta tags<link rel="stylesheet" href="{%static 'doctor/css/style.css'%}" type="text/css" media="all" /> -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<style type="text/css" media="all">
+	body{
+		background: #f8f8f8;
+}
+h3.my-heading {
+    font-weight: bold;
+}
+li.nav-item {
     margin: 0 20px 0 0;
-}</style>
+}
 
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
 
-    <!-- Bootstrap CSS -->
-  
-    <script src="{% static 'doctor/js/jquery.js' %}"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'doctor/bootstrap/css/bootstrap.min.css' %}">
-    
-   <title>{% block title %}Disease Predictor{% endblock %}</title>
-   
-   <link rel="stylesheet" href="{% static 'doctor/bootstrap/css/bootstrap.min.css' %}">
-   <link rel="stylesheet" href="{% static 'doctor/css/css.css' %}">
-    
+</style>
+	<title>{% block title %}Filox{%endblock title%}</title>
 
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand " href="#"><h3 class="my-heading ">Filox</h3> </a>
+
+	
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand " href="/doctor"><h3 class="my-heading ">Filox</h3> </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -39,6 +53,9 @@
 				<li class="nav-item {% block home_active %} {%endblock home_active %}">
 					<a class="nav-link" href="/doctor">Home <span class="sr-only">(current)</span></a>
 				</li>
+				<li class="nav-item {% block consult_active %} {%endblock consult_active %}">
+					<a class="nav-link" href="{%url 'doctor_list'%}">Consult</a>
+				</li>
 				<li class="nav-item {% block about_active %} {%endblock about_active %}">
 					<a class="nav-link" href="/doctor/about">About Us</a>
 				</li>
@@ -46,13 +63,7 @@
 				<li class="nav-item {% block contact_active %} {%endblock contact_active %}">
 					<a class="nav-link" href="/doctor/contact">Contact Us</a>
 				</li>
-				<li class="nav-item {% block consult_active %} {%endblock consult_active %}">
-					<a class="nav-link" href="{%url 'doctor_list'%}">Consult</a>
-				</li>
-
-
-
-
+				
 			</ul>
 			{% if user.is_authenticated %}
 			
@@ -101,38 +112,23 @@
 </div>
 </div>
 {%endfor%}
-  
-    {% block head %}
 
 
 
-    {% endblock %}
-
-
-  
-  </head>
-
-
-  <body>
+{% block body %} {% endblock body %}
 
 
 
-     
 
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-
-  {% block body %}
-
-  {% endblock %}
-
-   <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   
-    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- 
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>

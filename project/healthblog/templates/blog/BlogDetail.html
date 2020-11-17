@@ -1,0 +1,36 @@
+
+{% extends 'doctor/basic_ml.html' %}
+{%load static%}
+{%block title%}
+Home
+{%endblock title%}
+
+
+{%block body%}
+
+<div class="container my-3">
+    <div class="blog-post">
+            <h2 class="blog-post-title">{{post.title}}</h2>
+            <p class="blog-post-meta">{{post.post_date}} by <a href="#">{{post.author}}</a>
+            
+                {%if user.is_authenticated %}
+                {%if post.author.id ==  user.id%}
+                <div class="text-right">
+                    <a class="btn-sm btn-success" href="{% url 'UpdatePost' post.pk%}">edit</a>
+                    <a class="btn-sm btn-danger" href="{% url 'DeletePost' post.pk%}">delete</a>
+                </small> <br>
+            </div>
+                {%endif%}
+                
+                {%endif%}
+            </p>
+    
+            <p>{{post.body}}</p>
+            <hr>
+          </div>
+          </div>
+
+
+
+
+{%endblock body%}
