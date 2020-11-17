@@ -6,7 +6,15 @@ Home
 {%endblock title%}
 
 {%block body%}
+<style>
 
+  .btn-sm{
+    height:30px;
+  }
+  .xyz{
+    margin-left: 30px;
+  }
+</style>
 <div class="container my-3">
     <h2>Some Healthy stuff </h2>
     {% for post in object_list  %}
@@ -19,10 +27,10 @@ Home
                 {%if user.is_authenticated %}
 
     {%if post.author.id ==  user.id%}
-    <div class="text-right">
-    <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
-    <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
-</div>
+    <span class="xyz">
+      <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
+      <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
+    </span>
     {%endif%}
     {%endif%}
             </div>
