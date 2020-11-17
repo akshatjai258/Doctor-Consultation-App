@@ -38,17 +38,17 @@ def about(request):
 	
 def contact(request):
 	# name=request.post['name']
-	if(request.method=='POST'):
-	   name=request.POST['name']
-	   email=request.POST['email']
-	   content=request.POST['content']
-	   contact=Contact(name=name,email=email,content=content)
-      contact.save()
+   if(request.method=='POST'):
+      name=request.POST['name']
+      email=request.POST['email']
+      content=request.POST['content']
+      contact=Contact(name=name,email=email,content=content)
+      contact.save() 
       message = 'Hi '+str(name)+'. Greetings from Filox. Thankyou for submitting your query/feedback. In case of a query, we will get back to you as soon as possible. Also, this is a auto-generated mail. So please refrain from replying to this mail.'
       send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=False)
-	   messages.success(request,"Your query is sent successfully !!!")
-		
-	return render (request,"doctor/contact.html")
+      messages.success(request,"Your query is sent successfully !!!")
+
+   return render (request,"doctor/contact.html")
 
 def dashboard(request,pk):
 	doctor=Doctor.objects.get(id=pk)
