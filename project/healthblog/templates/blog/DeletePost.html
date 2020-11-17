@@ -1,0 +1,27 @@
+
+{% extends 'doctor/basic_ml.html' %}
+{%load static%}
+{%block title%}
+Delete Blog
+{%endblock title%}
+
+{%block body%}
+<div class="container">
+
+<h1>Delete Post ....</h1>
+
+<div class="form-group">
+    <h3>Delete {{post.title}}</h3>
+    <br>
+<br>
+<br>
+    <form method="POST">
+        {% csrf_token %}
+        <strong>Are you sure ?</strong>
+    <button class="btn btn-primary">Delete</button>
+    </form>
+</div>
+
+
+</div>
+{%endblock body%}

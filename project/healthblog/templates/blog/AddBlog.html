@@ -1,0 +1,33 @@
+
+{% extends 'doctor/basic_ml.html' %}
+{%load static%}
+{%block title%}
+Home
+{%endblock title%}
+
+{%block body%}
+{%if user.is_authenticated %}
+<div class="container">
+
+<h1>Add Post......</h1>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+    <button class="btn btn-primary">Add post</button>
+    </form>
+</div>
+
+
+</div>
+
+
+<script>
+
+    var name="{{user.id}}"
+    document.getElementById("authore").value=name;
+</script>
+{%else%}
+<h2>not allowed</h2>
+{% endif %}
+{%endblock body%}
