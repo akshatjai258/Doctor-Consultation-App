@@ -1,8 +1,8 @@
   
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView,CreateView,UpdateView,DeleteView
-from .models import Post
-from .forms import PostForm,UpdatePostForm
+from .models import Post,BlogComment
+from .forms import PostForm,UpdatePostForm,CommentForm
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
@@ -26,12 +26,40 @@ class ArticleDetailView(DetailView):
         stuff = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = stuff.total_likes()	
         context["total_likes"] = total_likes
+        context['CommentForm'] = CommentForm
         liked = False
         if stuff.likes.filter(id=self.request.user.id).exists():
             liked = True
         context["liked"] = liked
         return context
 
+def ArticleDetail(request,pk):
+    post=get_object_or_404(Post,id=pk)
+    comments=BlogComment.objects.filter(post=post).order_by('-id')
+    total_likes = post.total_likes()
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        liked = True
+
+    if request.method == 'POST':
+        commentform =CommentForm(request.POST or None)
+        if commentform.is_valid():
+            comment=request.POST.get('comment')
+            blogcomment=BlogComment.objects.create(post=post, user=request.user,comment=comment)
+            blogcomment.save()
+            return HttpResponseRedirect((reverse('BlogHome')))
+            
+    else:
+        commentform=CommentForm()
+        
+    context={
+        'post':post,
+        "total_likes" : total_likes,
+        "CommentForm":commentform,
+        "liked" : liked,
+        'comments':comments
+    }
+    return render(request,'blog/BlogDetail.html',context)
 
 class AddPostView(CreateView):
     model=Post
