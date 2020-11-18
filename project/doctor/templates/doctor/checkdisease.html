@@ -11,6 +11,8 @@
   /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 var symptoms=[];
+
+
 function Functionshow() {
   
   document.getElementById("searchbar").value = '';
@@ -58,7 +60,7 @@ window.onclick = function(event) {
     let input = document.getElementById('searchbar').value 
     input=input.toLowerCase(); 
     let x = document.getElementsByClassName('dropdown-item'); 
-      
+  
     for (i = 0; i < x.length; i++) {  
         if (!x[i].innerHTML.toLowerCase().includes(input)) { 
             x[i].style.display="none"; 
