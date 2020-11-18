@@ -19,10 +19,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+admin.site.site_header="Filox Admin"
+admin.site.site_title="Filox Admin Panel"
+admin.site.index_title="Welcome to Filox Admin Panel"
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('patient/', include('patient.urls')),
+    path('blog/', include('healthblog.urls')),
     path('doctor/', include('doctor.urls')),
     path('',views.home,name='projecthome')
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

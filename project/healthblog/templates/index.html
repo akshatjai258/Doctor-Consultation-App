@@ -1,10 +1,10 @@
-
-{% extends 'doctor/basic_ml.html' %}
-
+{% extends 'doctor/basic.html' %}
 {%load static%}
 {%block title%}
-Home
+Blog
 {%endblock title%}
+
+
 
 {%block body%}
 <style>
@@ -16,9 +16,10 @@ Home
     margin-left: 30px;
   }
 </style>
+
 <div class="container my-3">
     <h2>Some Healthy stuff </h2>
-    {% for post in object_list  %}
+    {% for post in doctor_page_obj  %}
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
         <div class="col p-4 d-flex flex-column position-static ">
             <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}}</strong>
@@ -28,10 +29,10 @@ Home
                 {%if user.is_authenticated %}
 
     {%if post.author.id ==  user.id%}
-    <span class="xyz">
-      <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
-      <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
-    </span>
+ <span class="xyz">
+    <a class="btn btn-sm btn-success text-right" href="{%url 'UpdatePost' post.pk%}">edit</a>
+    <a class="btn btn-sm btn-danger" href="{%url 'DeletePost' post.pk%}">delete</a><br/>
+  </span>
     {%endif%}
     {%endif%}
             </div>
@@ -77,4 +78,33 @@ Home
       </nav>
       
       </div>
+      <div class="d-flex justify-content-center container">
+        <nav aria-label="Page navigation example">
+      {% if doctor_page_obj.has_other_pages %}
+        <ul class="pagination">
+          {% if doctor_page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{doctor_page_obj.previous_page_number}}">previous</a></li>
+          {% else %}
+            <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+          {% endif %}
+          {% for i in doctor_page_obj.paginator.page_range %}
+            {% if doctor_page_obj.number == i %}
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
+            </li>
+            {% else %}
+              <li><a class="page-link" href="?page={{i}}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if doctor_page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{doctor_page_obj.next_page_number}}">Next</a></li>
+          {% else %}
+          <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+      </nav>
+      
+      </div>
+
 {%endblock body%}

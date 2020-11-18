@@ -49,6 +49,9 @@
 				<li class="nav-item {% block consult_active %} {%endblock consult_active %}">
 					<a class="nav-link" href="{%url 'doctor_list'%}">Consult</a>
 				</li>
+				<li class="nav-item {% block Blog_active %} {%endblock Blog_active %}">
+					<a class="nav-link" href="{%url 'BlogHome'%}">Blog</a>
+				</li>
 
 
 
@@ -63,7 +66,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{%url 'profile' request.user.doctor.id%}">My profile</a>
-          <a class="dropdown-item" href="{%url 'edit_profile'%}">Edit Profile</a>
+		  <a class="dropdown-item" href="{%url 'edit_profile'%}">Edit Profile</a>
+		  <a class="dropdown-item" href="{%url 'myblogs' request.user.id %}">Myblogs</a>
+		  <a class="dropdown-item" href="{%url 'AddPost' %}">Add A blog</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{%url 'handleLogout'%}">Logout</a>
         </div>
