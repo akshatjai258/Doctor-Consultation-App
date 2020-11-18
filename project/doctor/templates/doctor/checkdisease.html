@@ -6,12 +6,11 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/abbb.css' %}">   
  
-
-
 <script>
 
   /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
+var symptoms=[];
 function Functionshow() {
   
   document.getElementById("searchbar").value = '';
@@ -42,13 +41,13 @@ window.onclick = function(event) {
 }
 
   function Functionsymptoms(name) {
-    var newItem = document.createElement("TEXTAREA");
+    var newItem = document.createElement("LI");
     newItem.innerText = name;
     newItem.setAttribute("id","symptoms");
     
     newItem.setAttribute("class","symptoms");
     document.getElementById("sympbox").appendChild(newItem);
-    
+    symptoms.push(name);
   }
 
  
@@ -73,13 +72,13 @@ window.onclick = function(event) {
 
 $(document).ready( function(){
 
-
+var symlist=[];
 $("#predict").click(function () {
   event.preventDefault();
 
-  var symptoms = document.getElementsByClassName("symptoms");
+  
   var noofsym = symptoms.length;
-  var symlist=[];
+  
 
   if(noofsym == 0){
      alert(" please add some symptoms ");
@@ -88,7 +87,7 @@ $("#predict").click(function () {
   else {
 
   for(i=0;i<symptoms.length;i++){
-    symlist[i]=symptoms[i].value;
+    symlist.push(symptoms[i]);
   }
   
 
@@ -253,9 +252,9 @@ $("#predict").click(function () {
           <br><br>
 
         <div class="text-center">
-          <h4>This tool does not provide medical advice. It is intended for informational purposes only.
-          </h4><h4>It is not a substitute for professional medical advice, diagnosis or treatment. 
-          </h4>
+          <h3>This application does not aim to provide a substitute for professional medical advice, diagnosis or treatment.
+          </h3><h5>It is just to enlighten the users about how serious their illness can be.
+          </h5>
         <br><br>
 
         </div>
