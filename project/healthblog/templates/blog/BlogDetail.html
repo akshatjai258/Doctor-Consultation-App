@@ -64,7 +64,7 @@ max-height: 320px;
 
         <div class="container">
             <h2> Comments ({{comments.count}}) </h2>
-            <div class="my-2">
+            <div class="my-4">
                 {% if user.is_authenticated %}
         
                     <form method="post">
@@ -83,18 +83,42 @@ max-height: 320px;
             </div>
 
         {% for c in comments %}
-        <div class="row my-3">
+        <div class="row my-4">
             <div class="col-md-1 col-sm-1 col-xs-1 ">
-            <img class="rounded mx-auto d-block w-100 p-2" src="/media/images/profile/default.png"  alt="user">
+            <img class="rounded mx-auto d-block w-100 p-2" src="/static/doctor/images/def.jpg"  alt="user">
             </div>
             <div class="col-md-11 col-sm-11 col-xs-11 "> 
                 <b> {{c.user.username}} </b> <span class="badge badge-secondary ">{{c.timestamp| naturaltime}}</span>
             <div>   {{c.comment}} </div>
             <div class="reply mx-0">
+
+                
                 {% if user.is_authenticated %}
                 <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#replyBox{{c.id}}" aria-expanded="false" aria-controls="replyBox{{c.id}}">
                     Reply
                 </button>
+                {%else %}
+                <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#replyBox{{c.id}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
+                    Show Replies
+                </button>
+                {% endif %}
+                <div class="collapse replies my-3 " id="replyBox{{c.id}}">
+                    {% for reply in replyDict|get_val:c.id %}
+                    <div class="row my-2">
+                        <div class="col-md-1 ">
+                            <img class="rounded mx-auto d-block w-75 my-2 border border-dark p-2" src="/static/doctor/images/def.jpg" alt="user">
+                        </div>
+                        <div class="col-md-11">
+                            <div class="col-md-11 ">
+                                <b> {{reply.user.username}} </b> <span class="badge badge-secondary ">{{reply.timestamp| naturaltime}}</span>
+                                <div>{{reply.comment}}</div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                {% if user.is_authenticated %}
                 <div class="collapse" id="replyBox{{c.id}}">
                     <div class="card card-body my-2">
                         <form  method="post">
@@ -113,22 +137,7 @@ max-height: 320px;
         
                 {% endif %}
     
-                <div class="replies my-2 ">
-                    {% for reply in replyDict|get_val:c.id %}
-                    <div class="row my-2">
-                        <div class="col-md-1 ">
-                            <img class="rounded mx-auto d-block w-75 my-2 border border-dark p-2" src="/media/images/profile/default.png" alt="user">
-                        </div>
-                        <div class="col-md-11">
-                            <div class="col-md-11 ">
-                                <b> {{reply.user.username}} </b> <span class="badge badge-secondary ">{{reply.timestamp| naturaltime}}</span>
-                                <div>{{reply.comment}}</div>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    </div>
+                
 
         </div>
         </div>
@@ -136,7 +145,7 @@ max-height: 320px;
                 
             </div>
 
-
+            
 
         {% endfor %}
 

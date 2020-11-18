@@ -52,7 +52,7 @@ def ArticleDetail(request,pk):
 
     if request.method == 'POST':
         parentSno= request.POST.get('parentSno')
-        print(f"{parentSno}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        
         commentform =CommentForm(request.POST or None)
         if commentform.is_valid():
             if parentSno==None:
