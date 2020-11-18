@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
+from django.utils.timezone import now
 from ckeditor.fields import RichTextField
 # Create your models here.
 
@@ -19,3 +20,14 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('BlogDetail',args=str(self.id))
+
+
+
+class BlogComment(models.Model):
+    comment=models.TextField()
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    post=models.ForeignKey(Post, on_delete=models.CASCADE)
+    parent=models.ForeignKey('self',on_delete=models.CASCADE, null=True )
+    timestamp= models.DateTimeField(default=now)
+    def __str__(self):
+        return self.comment[0:13] + "..." + "by" + " " + self.user.username

@@ -2,13 +2,23 @@
 {% extends 'doctor/basic_ml.html' %}
 
 {%load static%}
+{% load humanize %}
 {%block title%}
 Home
 {%endblock title%}
 
 
 {%block body%}
+<style>
+textarea
+{
+    resize: none;
+    height: 320px;
+max-height: 320px;
+}
 
+
+</style>
 <div class="container my-3">
     <div class="blog-post">
             <h2 class="blog-post-title">{{post.title}}</h2>
@@ -50,6 +60,34 @@ Home
         
         </form>
 
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Post Comment </label>
+                {{CommentForm.comment}}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Comment</button>
+        </form>
+
+        {% if user.is_authenticated %}
+        {% for c in comments %}
+        <div class="row my-3">
+            <div class="col-md-1 col-sm-1 col-xs-1 ">
+            <img class="rounded mx-auto d-block w-100 p-2" src="/media/images/profile/default.png"  alt="user">
+            </div>
+            <div class="col-md-11 col-sm-11 col-xs-11 "> 
+                <b> {{c.user.username}} </b> <span class="badge badge-secondary ">{{c.timestamp| naturaltime}}</span>
+            <div>   {{c.comment}} </div>
+        </div>
+        </div>
+        {% endfor %}
+
+        {% endif %}
     </div>
+
+
+    
 
 {%endblock body%}
