@@ -35,7 +35,7 @@ Home
     {%endif%}
     {%endif%}
             </div>
-            <p class="card-text mb-auto">{{post.body| truncatechars:500}}</p>
+            <p class="card-text mb-auto">{{post.body| safe | truncatechars:500}}</p>
             <div class="my-2">
             	<a href="{%url 'BlogDetail' post.pk%}" role="button" class="btn btn-primary">Continue reading</a>
             </div>
