@@ -23,6 +23,7 @@
 
 
 
+
 #inputsym{
    
    position: fixed;
@@ -30,18 +31,30 @@
 }
 
 .symptoms{
-  border:ridge rgb(150, 177, 199);
-  margin: 2px;
+  border:0px solid rgba(3, 169, 244, 0.48);
+  width:105%;
+  margin: 4px;
   display: block ;
   text-align: center;
   padding: 0px !important;
   
-  background-color: #fdffff;
+  background-color:rgba(3, 169, 244, 0.20);
   text-shadow: 0px 1px 20px rgba(3, 169, 244, 0.78);
   box-shadow: 0px 8px 16px 0px rgba(78, 191, 243, 0.05);
  
 }
 
+a{
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:none;
+  color:white;
+}
+.btn-primary{
+  margin-top:0px;
+  margin-bottom:50px;
+}
 #symptoms-box{ 
 position: static;
 margin-top: 5%;
@@ -143,10 +156,11 @@ padding: 10px 10px 10px 10px;
 
 
   #searchbar{ 
-    margin-left: 25%; 
+    margin-left:380px ;
+    margin-top: 20px; 
     padding:10px; 
     border-radius: 10px; 
-   
+    
     width: 30%; 
 } 
 
@@ -154,3 +168,4 @@ padding: 10px 10px 10px 10px;
     padding:10px; 
 
   }
+
