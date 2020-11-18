@@ -36,7 +36,8 @@ class ArticleDetailView(DetailView):
 
 def ArticleDetail(request,pk):
     post=get_object_or_404(Post,id=pk)
-    comments=BlogComment.objects.filter(post=post).order_by('-id')
+    comments= BlogComment.objects.filter(post=post, parent=None).order_by('-id')
+    
     total_likes = post.total_likes()
     replies= BlogComment.objects.filter(post=post).exclude(parent=None)
     replyDict={}
