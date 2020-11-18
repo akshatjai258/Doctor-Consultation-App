@@ -24,7 +24,7 @@ import joblib as jb
 model = jb.load('trained_model')
 
 def home(request):
-	return render(request,'doctor/home.html')
+	return render(request,'doctor/home.html',)
 	
 def about(request):
 	# return HttpResponse('hr')
@@ -335,5 +335,5 @@ def checkdisease(request):
 
 
 def payment(request):
-   return render(request,'doctor/payment2.html')
+   return render(request,'doctor/payment.html')
 

@@ -54,51 +54,113 @@ active
                     <p class="subtitle-overview wow fadeInUp">This is an initiative to help both patients and doctors. If you are a patient, let us know your symptoms, we will guide you on your way to good health. You can also search for doctors and specialists of you choice near you. If you are doctor, register yourself with us. Let patients find you easily.</p>
                     
               <div class="row">
-
+                
+                {% if user.is_authenticated %}
                 <div class="col-md-4 wow bounceInUp" data-wow-duration="1.4s">
                   <div class="card">
                       <figure class="text-center">
-                          <img src="https://source.unsplash.com/yWYiNNK_tOI/940x650" class="img-fluid">
+                          <img src="{%static 'doctor/images/supportus.jpg'%}" class="img-fluid">
                       </figure>
                       <div class="card-body">
-                          <h5 class="card-title">Signup Doctors!!</h5>
-                          <p class="card-text">Are you a doctor? Looking to expand you business? Register yourself with us.<br><br><br></p>
-                          <a href="{%url 'signup' %}" class="btn btn-success">
-                            Signup
+                          <h5 class="card-title">Support Us</h5>
+                          <p class="card-text">We are a growing initiative. With a bit of your help, we can increase the efficiency of your predictor, gather more data and thus help you better.<br><br><br></p>
+                          <a href="{%url 'payment' %}" class="btn btn-success">
+                            Support
                             </a>
                         </div>
                   </div>
               </div>
+              <div class="col-md-4 wow bounceInUp" data-wow-duration="1.4s">
+                <div class="card">
+                    <figure class="text-center">
+                        <img src="https://source.unsplash.com/yfmjALh1S6s/940x650" class="img-fluid">
+                    </figure>
+                    <div class="card-body">
+                        <h5 class="card-title">Consult A Doctor</h5>
+                        <p class="card-text">Want to consult a doctor? Head over to the consult section to know about different doctors near your area.<br><br><br></p>
+                        <a href="{%url 'doctor_list'%}" class="btn btn-success">
+                          Consult
+                          </a>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-4 wow bounceInUp" data-wow-duration="1.4s">
+              <div class="card">
+                  <figure class="text-center">
+                      <img src="https://source.unsplash.com/b7Es9ZMdORo/940x650" class="img-fluid">
+                  </figure>
+                  <div class="card-body">
+                      <h5 class="card-title">Predict Your Disease</h5>
+                      <p class="card-text">Worried about your ill health. Make use of our well trained ML base disease predictor to get an accurate knowledge of the possible disease you have.<br><br></p>
+                      <a href="{% url 'checkdisease' %}" class="btn btn-success">
+                        Disease Predictor
+                        </a>
+                    </div>
+              </div>
+          </div>
+
+              {% else %}
+
+              <div class="col-md-3 wow bounceInUp" data-wow-duration="1.4s">
+                <div class="card">
+                    <figure class="text-center">
+                        <img src="https://source.unsplash.com/yWYiNNK_tOI/940x650" class="img-fluid">
+                    </figure>
+                    <div class="card-body">
+                        <h5 class="card-title">Signup Doctors!!</h5>
+                        <p class="card-text">Are you a doctor? Looking to expand you business? Register yourself with us.<br><br><br><br><br></p>
+                        <a href="{%url 'signup' %}" class="btn btn-success">
+                          Signup
+                          </a>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-3 wow bounceInUp" data-wow-duration="1.4s">
+                <div class="card">
+                    <figure class="text-center">
+                        <img src="{%static 'doctor/images/supportus.jpg'%}" class="img-fluid">
+                    </figure>
+                    <div class="card-body">
+                        <h5 class="card-title">Support Us</h5>
+                        <p class="card-text">We are a growing initiative. With a bit of your help, we can increase the efficiency of your predictor, gather more data and thus help you better.<br><br><br></p>
+                        <a href="{%url 'signup' %}" class="btn btn-success">
+                          Support
+                          </a>
+                      </div>
+                </div>
+            </div>
 
 
-                  <div class="col-md-4 wow bounceInUp" data-wow-duration="1.4s">
+                  <div class="col-md-3 wow bounceInUp" data-wow-duration="1.4s">
                       <div class="card">
                           <figure class="text-center">
                               <img src="https://source.unsplash.com/yfmjALh1S6s/940x650" class="img-fluid">
                           </figure>
                           <div class="card-body">
                               <h5 class="card-title">Consult A Doctor</h5>
-                              <p class="card-text">Want to consult a doctor? Head over to the consult section to know about different doctors near your area.<br><br></p>
+                              <p class="card-text">Want to consult a doctor? Head over to the consult section to know about different doctors near your area.<br><br><br></p>
                               <a href="{%url 'doctor_list'%}" class="btn btn-success">
                                 Consult
                                 </a>
                             </div>
                       </div>
                   </div>
-                  <div class="col-md-4 wow bounceInUp" data-wow-duration="1.4s">
+                  <div class="col-md-3 wow bounceInUp" data-wow-duration="1.4s">
                     <div class="card">
                         <figure class="text-center">
                             <img src="https://source.unsplash.com/b7Es9ZMdORo/940x650" class="img-fluid">
                         </figure>
                         <div class="card-body">
                             <h5 class="card-title">Predict Your Disease</h5>
-                            <p class="card-text">Worried about your ill health. Make use of our well trained ML base disease predictor to get an accurate knowledge of the possible disease you have.</p>
+                            <p class="card-text">Worried about your ill health. Make use of our well trained ML base disease predictor to get an accurate knowledge of the possible disease you have.<br><br></p>
                             <a href="{% url 'checkdisease' %}" class="btn btn-success">
                               Disease Predictor
                               </a>
                           </div>
                     </div>
                 </div>
+
+                {% endif %}
                   
                   
               </div>

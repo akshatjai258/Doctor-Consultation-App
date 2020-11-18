@@ -1,8 +1,8 @@
 {% extends 'doctor/basic_ml.html' %}
-{%block title%} Support Us {%endblock title%}
-
+{%block title%} Support
+{%endblock title%}
 {% block body %}
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .w3-container {
             font-size: 14px;
@@ -21,11 +21,11 @@
             <div class="w3-card-4">
 
                 <header class="w3-container w3-blue">
-                    <h1>Support us</h1>
+                    <h1>SUPPORT US</h1>
                 </header>
 
                 <div class="w3-container">
-                    <p>Help us serve you better</p>
+                    <p>Help us help you</p>
 
                     <!-- PAYPAL BUTTONS HERE  -->
 
@@ -33,7 +33,7 @@
 
                     <!-- Include the PayPal JavaScript SDK -->
                     <script
-                        src="https://www.paypal.com/sdk/js?client-id=AWuifM7Ou6WodjWfIb1ieYFbIlug1kd5Nwgl0sYdBB6_3htyus0IZANg4ajW1uY5GKUiXALl0_DOFA4_&currency=INR">
+                        src="https://www.paypal.com/sdk/js?client-id=AVh6iiyCaRDWlHSt54hd2fCU8Emv2Y7o5ytenw4MzDZ8vSR2jbAvpo_xc-PIVAM94-vz_HOGkoa5sEqJ&currency=USD">
                     </script>
 
                     <script>
@@ -45,7 +45,7 @@
                                 return actions.order.create({
                                     purchase_units: [{
                                         amount: {
-                                            value: '50'
+                                            value: '5.00'
                                         }
                                     }]
                                 });
@@ -75,4 +75,4 @@
 
     </div>
 
-{% endblock %}
+{% endblock body %}
