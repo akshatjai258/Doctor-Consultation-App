@@ -5,6 +5,7 @@ from .models import Post,BlogComment
 from .forms import PostForm,UpdatePostForm,CommentForm
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
+from .templatetags import extras
 from django.urls import reverse_lazy, reverse
 # Create your views here.
 # def BlogHome(request):
@@ -37,16 +38,34 @@ def ArticleDetail(request,pk):
     post=get_object_or_404(Post,id=pk)
     comments=BlogComment.objects.filter(post=post).order_by('-id')
     total_likes = post.total_likes()
+    replies= BlogComment.objects.filter(post=post).exclude(parent=None)
+    replyDict={}
+    for reply in replies:
+        if reply.parent.id not in replyDict.keys():
+            replyDict[reply.parent.id]=[reply]
+        else:
+            replyDict[reply.parent.id].append(reply)
+    
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         liked = True
 
     if request.method == 'POST':
+        parentSno= request.POST.get('parentSno')
+        print(f"{parentSno}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         commentform =CommentForm(request.POST or None)
         if commentform.is_valid():
-            comment=request.POST.get('comment')
-            blogcomment=BlogComment.objects.create(post=post, user=request.user,comment=comment)
-            blogcomment.save()
+            if parentSno==None:
+                comment=request.POST.get('comment')
+                blogcomment=BlogComment.objects.create(post=post, user=request.user,comment=comment)
+                blogcomment.save()
+            else:
+                parent= BlogComment.objects.get(id=parentSno)
+                comment=request.POST.get('comment')
+                blogcomment=BlogComment.objects.create(post=post, user=request.user,comment=comment,parent=parent)
+                blogcomment.save()
+                
+
             return HttpResponseRedirect((reverse('BlogHome')))
             
     else:
@@ -57,7 +76,8 @@ def ArticleDetail(request,pk):
         "total_likes" : total_likes,
         "CommentForm":commentform,
         "liked" : liked,
-        'comments':comments
+        'comments':comments,
+        "replyDict" : replyDict
     }
     return render(request,'blog/BlogDetail.html',context)
 
