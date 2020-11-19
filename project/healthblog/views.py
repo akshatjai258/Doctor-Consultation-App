@@ -66,8 +66,9 @@ def ArticleDetail(request,pk):
                 blogcomment=BlogComment.objects.create(post=post, user=request.user,comment=comment,parent=parent)
                 blogcomment.save()
                 
+                
 
-            return HttpResponseRedirect((reverse('BlogHome')))
+            return HttpResponseRedirect((reverse('BlogDetail',kwargs={'pk':post.id})))
             
     else:
         commentform=CommentForm()
