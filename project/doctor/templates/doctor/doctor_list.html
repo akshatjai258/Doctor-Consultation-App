@@ -70,9 +70,12 @@ margin-top: 100px;
       </tr>
     </thead>
     <tbody>
+      
+    
       {%for i in doctor_page_obj%}
       <tr>
-        <th scope="row">{{i.id}}</th>
+        <th scope="row">{{ forloop.counter }}}</th>
+       
         <!-- <td>{{i.user.first_name}}</td>
         <td>{{i.user.last_name}}</td> -->
         <td>{{i.user.username}}</td>

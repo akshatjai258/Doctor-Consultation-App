@@ -135,7 +135,7 @@ def doctor_list(request):
     paginated_list=Paginator(doctors,5)
     page_number=request.GET.get('page')
     doctor_page_obj=paginated_list.get_page(page_number)
-    context={'doctors':doctors,'myFilter1':myFilter1,'doctor_page_obj':doctor_page_obj}
+    context={'doctors':doctors,'myFilter1':myFilter1,'doctor_page_obj':doctor_page_obj,'var':1}
     return render(request,'doctor/doctor_list.html',context)
 
 def checkdisease(request):
