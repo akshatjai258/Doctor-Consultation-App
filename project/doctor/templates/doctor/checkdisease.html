@@ -1,7 +1,9 @@
 {% extends "doctor/basic_ml.html" %}
 
 {% load static %}
-
+{% block checkdisease_active %}
+active
+{% endblock checkdisease_active %}
 {% block head %}
 
     <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/abbb.css' %}">   

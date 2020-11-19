@@ -15,8 +15,8 @@ from django.urls import reverse_lazy, reverse
 class HomeView(ListView):
     model=Post
     template_name='blog/BlogHome.html'
-    ordering=['-post_date']
-    paginate_by=2
+    ordering=['-id']
+    paginate_by=4
 
 
 class ArticleDetailView(DetailView):
@@ -102,7 +102,7 @@ class DeletePostView(DeleteView):
 def index_page(request,pk):
     logged_in_user = request.user
     logged_in_user_posts = Post.objects.filter(author=pk)
-    paginated_list=Paginator(logged_in_user_posts,2)
+    paginated_list=Paginator(logged_in_user_posts,4)
     page_number=request.GET.get('page')
     doctor_page_obj=paginated_list.get_page(page_number)
 
