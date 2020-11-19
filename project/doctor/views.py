@@ -71,7 +71,7 @@ def handleSignup(request):
           html_message = loader.render_to_string('doctor/email_regis.html',{'username':username})
 
           message = ''
-          send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=True,html_message=html_message)
+          send_mail('Thank you for registering!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=True,html_message=html_message)
           return redirect('doctorHome')
   else:
         if request.user.is_authenticated:
