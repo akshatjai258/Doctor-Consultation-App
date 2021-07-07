@@ -39,16 +39,16 @@ header{
    /* background: linear-gradient(0deg, #08d4fd 0%, #503eff 100%);*/
     /*background: linear-gradient(#e66465, #9198e5);*/
     position: relative;
-    color: #ffffff;
+    color: black;
     overflow: hidden;
 }
-.overlay{position:absolute;background-color: rgb(80, 117, 218);height:100%;width:100%;top:0;left:0;}
+.overlay{position:absolute;background-color: white;}
 header .tophead{
     margin-top: 150px;
 	
 }
 .typewrite{
-    color:white;
+    color:black;
 }
 header .title-main{
     font-size: 45px;
@@ -72,7 +72,7 @@ header .btn-explore{
     font-size: 14px;
     background: #3dce8c;
     border: 1px solid #3dce8c;
-    color: #ffffff;
+    color: black;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
@@ -86,9 +86,9 @@ header .btn-account{
     padding: 8px 20px;
    /* width: 128px;*/
     font-size: 14px;
-    background: #ffffff;
-    border: 1px solid #ffffff;
-    color: #4f44ff;
+    background: black;
+    border: 1px solid black;
+    color: white;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
@@ -133,7 +133,7 @@ header .btn-account:hover {background-color: #3dce8c}
     bottom: 0;
     border-width: 0 0 35vh 100vw;
     border-style: solid;
-    border-color: transparent transparent #ffffff transparent;
+    border-color: transparent transparent black transparent;
 }
 .sesgoarriba{
     z-index: 10;
@@ -142,7 +142,7 @@ header .btn-account:hover {background-color: #3dce8c}
     top: 0;
     border-width: 35vh 100vw 0 0;
     border-style: solid;
-    border-color: #ffffff transparent transparent  transparent;
+    border-color: black transparent transparent  transparent;
 }
 .contenedor{
     overflow: hidden;
@@ -247,7 +247,7 @@ header .btn-account:hover {background-color: #3dce8c}
     position: relative;
     top: 45%;
     text-align: center;
-    color: #ffffff;
+    color: black;
 }
 .enmica div{
     position: relative;
@@ -255,7 +255,7 @@ header .btn-account:hover {background-color: #3dce8c}
     top: 46%;
     width: 40px;
     height: 5px;
-    background: #ffffff;
+    background: black;
     margin: auto;
 }
 
@@ -280,7 +280,7 @@ ul{
 
 /* Footer */
 footer.footer{padding:4rem 0;}
-footer.footer ul li a{color: #ffffff;text-decoration: none;}
+footer.footer ul li a{color: black;text-decoration: none;}
 footer.footer p{font-size: 18px;color:#dcdcdc;}
 
 

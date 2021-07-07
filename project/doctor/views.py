@@ -51,14 +51,9 @@ def contact(request):
       message = 'Hi '+str(name)+'. Greetings from Filox. Thank you for submitting your query/feedback. In case of a query, we will get back to you as soon as possible. Also, this is a auto-generated mail. So please refrain from replying to this mail.'
       send_mail('We heard you!!',message,settings.EMAIL_HOST_USER,[str(email)],fail_silently=True,html_message=html_message)
       messages.success(request,"Your query is sent successfully !!!")
-
-   return render (request,"doctor/contact.html")
-
-def dashboard(request,pk):
-	doctor=Doctor.objects.get(id=pk)
-	context={'doctor':doctor}
-	return render(request,'doctor/dashboard.html',context)
-	
+      return redirect('doctorHome')
+      
+   return render (request,"doctor/contact.html")	
 
 def handleSignup(request):
   if request.method == 'POST':

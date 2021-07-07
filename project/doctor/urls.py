@@ -7,7 +7,6 @@ urlpatterns = [
 	path('contact/', views.contact,name = 'contact'),
 	path('about/', views.about,name = 'about'),
 	path('signup/', views.handleSignup,name = 'signup'),
-	path('dashboard/<int:pk>',views.dashboard,name = 'dashboard'),
 	path('logout', views.handelLogout, name = "handleLogout"),
 	path('<int:pk>/view_profile',ShowProfilePageView.as_view() ,name = 'profile'),
 	path('edit_profile/', views.profile, name='edit_profile'),
