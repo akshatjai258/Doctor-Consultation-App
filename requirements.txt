@@ -9,7 +9,7 @@ django-filter==2.4.0
 django-js-asset==1.2.2
 django-phonenumber-field==5.0.0
 filelock==3.0.12
-Jinja2==2.11.2
+Jinja2==2.11.3
 joblib==0.17.0
 MarkupSafe==1.1.1
 numpy==1.19.4
