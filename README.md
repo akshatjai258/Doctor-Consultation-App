@@ -1,4 +1,4 @@
-# Sem-3-Project
+# Doctor-Consultation-App
 This is the project for Computer System Organisation, semester 3, IIT BHU by Team 15 - **Intricates**.
 
 The collaborated team members are 
