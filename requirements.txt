@@ -12,7 +12,7 @@ filelock==3.0.12
 Jinja2==2.11.2
 joblib==0.17.0
 MarkupSafe==1.1.1
-numpy==1.19.4
+numpy==1.22.0
 phonenumbers==8.12.12
 Pillow==8.0.1
 pytz==2020.4
