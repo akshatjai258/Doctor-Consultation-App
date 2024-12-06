@@ -19,7 +19,7 @@ pytz==2020.4
 scikit-learn==0.23.2
 scipy==1.5.4
 six==1.15.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 threadpoolctl==2.1.0
 virtualenv==20.1.0
 wincertstore==0.2
